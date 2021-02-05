@@ -1,0 +1,122 @@
+$vue-keel-primary-color: #ccc !default;
+$vue-keel-secondary-color: #eee !default;
+$vue-keel-border-radius: 6px !default;
+$vue-keel-line-height: 15px !default;
+$vue-keel-spacing: 10px !default;
+
+@keyframes vueKeelAnimation {
+  0% {
+    transform: translate3d(-30%, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+@mixin vue-keel {
+  position: relative;
+  overflow: hidden;
+  height: $vue-keel-line-height;
+  background: $vue-keel-secondary-color;
+
+  .vue-keel-is-rounded & {
+    border-radius: $vue-keel-border-radius;
+  }
+
+  .vue-keel-is-centered & {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .vue-keel-is-animated &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    max-width: 1000px;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      darken($vue-keel-secondary-color, 5%) 15%,
+      transparent 30%
+    );
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: vueKeelAnimation;
+    animation-timing-function: linear;
+  }
+}
+
+@mixin vue-keel-spacing {
+  [class^="vue-keel-"] + & {
+    margin-top: 2 * $vue-keel-spacing;
+  }
+}
+
+.vue-keel-heading {
+  @include vue-keel-spacing;
+  display: flex;
+
+  &__img {
+    @include vue-keel;
+    width: 2 * $vue-keel-line-height + 3 * $vue-keel-spacing;
+    height: 2 * $vue-keel-line-height + 3 * $vue-keel-spacing;
+    margin-right: 1.5 * $vue-keel-spacing;
+  }
+
+  &__content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__title {
+    @include vue-keel;
+    width: 85%;
+    margin-bottom: $vue-keel-spacing;
+    background: $vue-keel-primary-color;
+  }
+
+  &__subtitle {
+    @include vue-keel;
+    width: 90%;
+  }
+}
+
+.vue-keel-text {
+  @include vue-keel-spacing;
+
+  &__line {
+    @include vue-keel;
+    width: 100%;
+    margin-bottom: $vue-keel-spacing;
+
+    &:nth-child(4n + 1) {
+      width: 80%;
+    }
+
+    &:nth-child(4n + 2) {
+      width: 100%;
+    }
+
+    &:nth-child(4n + 3) {
+      width: 70%;
+    }
+
+    &:nth-child(4n + 4) {
+      width: 85%;
+    }
+  }
+}
+
+.vue-keel-img {
+  @include vue-keel;
+  @include vue-keel-spacing;
+  width: 100%;
+  height: 120px;
+}
