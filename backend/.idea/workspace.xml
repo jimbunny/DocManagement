@@ -20,11 +20,492 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c353ec39-f8b8-4079-a088-14b64c6e39ec" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/code.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/constants.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/decorators.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/jwt_util.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/logger.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/middlewares.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/vaild.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/debug.log.1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/prod.logs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/make.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manager.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/menu.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/base.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/profiles.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/users.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/auths.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/login.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/menuManagement.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/../LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/profiles.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/roleManagement.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/routers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/userManagement.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/users.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/router.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/api_v1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/run.pid" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/startup.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/echarts.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/map.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/testapp.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/testcommon.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/testlogger.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wait-for-it.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../docker-compose.prod.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../docs/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../docs/READNE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../docs/make.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../docs/source/conf.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../docs/source/index.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../docs/source/modules.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../docs/source/resources.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.browserslistrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.env.development" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.env.production" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.env.stage" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.env.test" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.eslintignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.eslintrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.stylelintrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/README_DClOUD.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/babel.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/deploy.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/http/mock.http" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/mock/controller/changeLog.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/mock/controller/colorfulIcon.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/mock/controller/goodsDetail.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/mock/controller/goodsList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/mock/controller/icon.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/mock/controller/remixIcon.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/mock/controller/roleManagement.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/mock/controller/router.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/mock/controller/table.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/mock/controller/tree.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/mock/controller/upload.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/mock/controller/user.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/mock/controller/userManagement.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/mock/controller/waterfall.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/mock/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/mock/mockServer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/mock/static.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/mock/utils/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/nginx.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/plopfile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/postcss.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/prettier.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/preview/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/public/static/loading.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/push.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/api/changeLog.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/api/colorfulIcon.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/api/face.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/api/github.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/api/goodsDetail.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/api/goodsList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/api/icon.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/api/menuManagement.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/api/news.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/api/publicKey.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/api/remixIcon.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/api/roleManagement.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/api/router.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/api/table.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/api/tree.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/api/user.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/api/userManagement.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/api/waterfall.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/assets/comparison/left.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/assets/comparison/right.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/assets/echarts/legend_bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/assets/error_images/401.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/assets/error_images/404.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/assets/error_images/cloud.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/assets/ewm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/assets/ewm_vip.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/assets/ewm_wx.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/assets/login_images/background.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/assets/qr_logo/lqr_logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/assets/user.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/colorfulIcon/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/colorfulIcon/svg/alphabetical_sorting.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/ByuiBackToTop/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/ByuiCharge/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/ByuiImage/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/ByuiProfile/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/ByuiQrCode/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/ByuiQueryForm/ByuiQueryFormBottomPanel.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/ByuiQueryForm/ByuiQueryFormLeftPanel.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/ByuiQueryForm/ByuiQueryFormRightPanel.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/ByuiQueryForm/ByuiQueryFormTopPanel.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/ByuiQueryForm/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/ByuiSnow/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/ByuiSticky/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/ByuiUpload/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/ByuiWaterfall/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/ColorfullIcon/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/ErrorLog/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/GithubCorner/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/JsonEditor/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/RemixIcon/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/SelectTree/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/UploadExcel/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/config/permission.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/config/settings.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/directive/clipboard/clipboard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/directive/clipboard/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/directive/drag/drag.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/directive/drag/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/directive/permission/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/directive/permission/permission.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/layouts/EmptyLayout.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/layouts/components/AppMain/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/layouts/components/Avatar/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/layouts/components/Link/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/layouts/components/Logo/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/layouts/components/NavBar/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/layouts/components/ThemeBar/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/layouts/components/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/layouts/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/layouts/mixin/GetCode.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/layouts/mixin/Media.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/plugins/byui-echarts-theme.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/plugins/byuiComparison.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/plugins/byuiCount.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/plugins/byuiIcon.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/plugins/byuiKeel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/plugins/byuiMagnifier.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/plugins/byuiMarkdownEditor.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/plugins/byuiPlayer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/plugins/byuiVerify.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/plugins/echarts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/plugins/element.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/plugins/f12.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/plugins/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/plugins/support.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/remixIcon/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/remixIcon/svg/qq-fill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/remixIcon/svg/vuejs-fill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/router/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/store/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/store/modules/errorLog.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/store/modules/permission.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/store/modules/settings.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/store/modules/table.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/store/modules/tagsBar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/store/modules/user.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/styles/byui.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/styles/element-variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/styles/keel-variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/styles/loading.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/styles/quill.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/styles/spinner/dots.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/styles/spinner/gauge.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/styles/spinner/inner-circles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/styles/spinner/plus.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/styles/transition.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/styles/variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/utils/accessToken.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/utils/byui.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/utils/clipboard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/utils/encrypt.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/utils/errorLog.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/utils/handleRoutes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/utils/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/utils/pageTitle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/utils/permission.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/utils/request.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/utils/validate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/vendor/ExportExcel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/401.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/404.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/backToTop/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/betterScroll/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/card/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/codeGenerator/components/TableEditor.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/codeGenerator/components/TableExhibition.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/codeGenerator/components/TableExhibitionBody.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/codeGenerator/components/TableExhibitionHeader.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/codeGenerator/components/TableExhibitionQuery.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/codeGenerator/components/snippetTable.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/codeGenerator/components/snippetTableColumn.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/codeGenerator/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/echarts/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/editor/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/element/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/errorLog/components/ErrorTest.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/errorLog/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/excel/exportExcel.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/excel/exportMergeHeaderExcel.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/excel/exportSelectExcel.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/excel/uploadExcel.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/form/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/icon/colorfulIcon.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/icon/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/icon/remixIcon.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/imgComparison/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/loading/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/lodash/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/magnifier/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/markdown/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/markdown/js/markdown.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/markdownEditor/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/more/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/nested/menu1/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/nested/menu1/menu1-1/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/nested/menu1/menu1-1/menu1-1-1/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/news/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/permission/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/player/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/qrCode/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/smallComponents/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/sticky/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/table/components/TableEdit.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/table/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/table/inlineEditTable.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/tree/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/upload/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/verify/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/waterfall/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/byui/webSocket/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/docManagement/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/index/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/login/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/mall/goodsDetail/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/mall/goodsList/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/mall/pay/components/Step1.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/mall/pay/components/Step2.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/mall/pay/components/Step3.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/mall/pay/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/personalCenter/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/personnelManagement/menuManagement/components/MenuManagementEdit.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/personnelManagement/menuManagement/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/personnelManagement/roleManagement/components/RoleManagementEdit.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/personnelManagement/roleManagement/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/personnelManagement/userManagement/components/UserManagementEdit.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/personnelManagement/userManagement/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/redirect/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/register/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/test/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/svgo.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/vue.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/conf/my.cnf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/#ib_16384_0.dblwr" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/#ib_16384_1.dblwr" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/auto.cnf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000001" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000002" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000003" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000004" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000005" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000006" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000007" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000008" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000009" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000010" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000011" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000012" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000013" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000014" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000015" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000016" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000017" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000018" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000019" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000020" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000021" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000022" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000023" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000024" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000025" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000026" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000027" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000028" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000029" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000030" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000031" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000032" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000033" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000034" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000035" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000036" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000037" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000038" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.000039" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/binlog.index" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/ca-key.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/ca.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/client-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/client-key.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/demo/alembic_version.ibd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/demo/profiles.ibd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/demo/users.ibd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/ib_buffer_pool" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/ib_logfile0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/ib_logfile1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/ibdata1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/mysql.ibd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/mysql/general_log.CSM" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/mysql/general_log.CSV" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/mysql/general_log_212.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/mysql/slow_log.CSM" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/mysql/slow_log.CSV" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/mysql/slow_log_213.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/accounts_145.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/binary_log_trans_189.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/cond_instances_82.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/data_lock_waits_161.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/data_locks_160.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/error_log_83.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_errors_su_139.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_errors_su_140.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_errors_su_141.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_errors_su_142.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_errors_su_143.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_stages_cu_111.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_stages_hi_112.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_stages_hi_113.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_stages_su_114.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_stages_su_115.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_stages_su_116.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_stages_su_117.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_stages_su_118.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_statement_119.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_statement_120.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_statement_121.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_statement_122.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_statement_123.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_statement_124.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_statement_125.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_statement_126.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_statement_127.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_statement_128.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_statement_129.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_statement_130.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_transacti_131.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_transacti_132.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_transacti_133.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_transacti_134.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_transacti_135.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_transacti_136.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_transacti_137.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_transacti_138.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_waits_cur_84.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_waits_his_85.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_waits_his_86.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_waits_sum_87.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_waits_sum_88.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_waits_sum_89.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_waits_sum_90.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_waits_sum_91.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/events_waits_sum_92.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/file_instances_93.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/file_summary_by__94.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/file_summary_by__95.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/global_status_181.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/global_variables_184.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/host_cache_96.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/hosts_146.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/keyring_keys_152.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/log_status_174.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/memory_summary_b_154.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/memory_summary_b_155.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/memory_summary_b_156.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/memory_summary_b_157.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/memory_summary_g_153.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/metadata_locks_159.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/mutex_instances_97.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/objects_summary__98.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/performance_time_99.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/persisted_variab_187.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/prepared_stateme_175.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/processlist_100.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/replication_appl_165.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/replication_appl_166.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/replication_appl_167.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/replication_appl_168.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/replication_appl_170.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/replication_appl_171.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/replication_asyn_172.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/replication_asyn_173.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/replication_conn_162.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/replication_conn_164.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/replication_grou_163.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/replication_grou_169.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/rwlock_instances_101.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/session_account__151.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/session_connect__150.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/session_status_182.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/session_variable_185.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/setup_actors_102.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/setup_consumers_103.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/setup_instrument_104.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/setup_objects_105.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/setup_threads_106.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/socket_instances_147.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/socket_summary_b_148.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/socket_summary_b_149.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/status_by_accoun_177.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/status_by_host_178.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/status_by_thread_179.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/status_by_user_180.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/table_handles_158.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/table_io_waits_s_107.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/table_io_waits_s_108.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/table_lock_waits_109.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/threads_110.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/tls_channel_stat_190.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/user_defined_fun_188.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/user_variables_b_176.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/users_144.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/variables_by_thr_183.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/performance_schema/variables_info_186.sdi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/private_key.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/public_key.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/server-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/server-key.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/sys/sys_config.ibd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/undo_001" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/db/undo_002" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql/init/init.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../nginx/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../nginx/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../nginx/backend/conf/backend.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../nginx/frontend/conf/frontend.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../nginx/nginx.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/debug.logs" beforeDir="false" afterPath="$PROJECT_DIR$/logs/debug.logs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,15 +525,16 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Code\DocManagement\backend" />
       <recent name="D:\Code\DocManagement\backend\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Flask server.Flask (manager.py)">
+  <component name="RunManager" selected="Flask server.Flask (manager.py) (1)">
     <configuration name="backend" type="PythonConfigurationType" factoryName="Python">
       <module name="backend" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -73,6 +555,21 @@
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Flask (manager.py) (1)" type="Python.FlaskServer" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <option name="target" value="$PROJECT_DIR$/manager.py" />
+      <option name="targetType" value="PATH" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
     <configuration name="Flask (manager.py)" type="Python.FlaskServer" temporary="true" nameIsGenerated="true">
@@ -104,9 +601,11 @@
     <list>
       <item itemvalue="Flask server.Flask (manager.py)" />
       <item itemvalue="Python.backend" />
+      <item itemvalue="Flask server.Flask (manager.py) (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Flask server.Flask (manager.py) (1)" />
         <item itemvalue="Flask server.Flask (manager.py)" />
       </list>
     </recent_temporary>
@@ -124,6 +623,7 @@
       <workItem from="1612504975489" duration="172000" />
       <workItem from="1612505159155" duration="55000" />
       <workItem from="1612505224038" duration="10391000" />
+      <workItem from="1612748651561" duration="4903000" />
     </task>
     <servers />
   </component>
@@ -140,6 +640,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1612505774701">
@@ -150,25 +651,29 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="720" y="322" key="#com.intellij.fileTypes.FileTypeChooser/-1024.0.1024.728/0.0.1920.1040@0.0.1920.1040" timestamp="1612506593169" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1612521846431">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1612755673636">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/-1024.0.1024.728/0.0.1920.1040@0.0.1920.1040" timestamp="1612505777080" />
+    <state x="740" y="275" key="FileChooserDialogImpl/-1024.0.1024.728/0.0.1920.1040@0.0.1920.1040" timestamp="1612755673636" />
+    <state width="938" height="282" key="GridCell.Tab.0.bottom" timestamp="1612749975264">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="938" height="282" key="GridCell.Tab.0.bottom/-1024.0.1024.728/0.0.1920.1040@0.0.1920.1040" timestamp="1612749975264" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1024.0.1024.728@0.0.1920.1040" timestamp="1612521846430" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1612521846429">
+    <state width="938" height="282" key="GridCell.Tab.0.center" timestamp="1612749975264">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/-1024.0.1024.728/0.0.1920.1040@0.0.1920.1040" timestamp="1612505777080" />
+    <state width="938" height="282" key="GridCell.Tab.0.center/-1024.0.1024.728/0.0.1920.1040@0.0.1920.1040" timestamp="1612749975264" />
     <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1024.0.1024.728@0.0.1920.1040" timestamp="1612521846429" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1612521846427">
+    <state width="938" height="282" key="GridCell.Tab.0.left" timestamp="1612749975264">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/-1024.0.1024.728/0.0.1920.1040@0.0.1920.1040" timestamp="1612505777080" />
+    <state width="938" height="282" key="GridCell.Tab.0.left/-1024.0.1024.728/0.0.1920.1040@0.0.1920.1040" timestamp="1612749975264" />
     <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1024.0.1024.728@0.0.1920.1040" timestamp="1612521846427" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1612521846429">
+    <state width="938" height="282" key="GridCell.Tab.0.right" timestamp="1612749975264">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/-1024.0.1024.728/0.0.1920.1040@0.0.1920.1040" timestamp="1612505777080" />
+    <state width="938" height="282" key="GridCell.Tab.0.right/-1024.0.1024.728/0.0.1920.1040@0.0.1920.1040" timestamp="1612749975264" />
     <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1024.0.1024.728@0.0.1920.1040" timestamp="1612521846429" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1612505203314">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -177,5 +682,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/backend$Flask__manager_py_.coverage" NAME="Flask (manager.py) Coverage Results" MODIFIED="1612505719946" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/backend$Flask__manager_py___1_.coverage" NAME="Flask (manager.py) (1) Coverage Results" MODIFIED="1612749969390" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
