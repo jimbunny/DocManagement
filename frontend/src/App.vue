@@ -1,5 +1,5 @@
 <template>
-  <div id="vue-flask-mysql-demo">
+  <div id="doc-management">
     <router-view />
   </div>
 </template>

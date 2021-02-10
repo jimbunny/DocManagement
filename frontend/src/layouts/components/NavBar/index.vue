@@ -24,6 +24,7 @@
             @click="refreshRoute"
           />
           <avatar></avatar>
+          <lang-select></lang-select>
           <!--  <byui-icon
             title="退出系统"
             :icon="['fas', 'sign-out-alt']"
@@ -37,6 +38,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import LangSelect from "@/components/LangSelect";
 
 import {
   Avatar,
@@ -54,6 +56,7 @@ export default {
     ErrorLog,
     FullScreenBar,
     ThemeBar,
+    LangSelect,
   },
   data() {
     return {
