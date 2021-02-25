@@ -24,8 +24,13 @@ class RouterResource(Resource):
         获取路由信息
         :return: json
         """
+        self.parser.add_argument("permission", type=str, location="args", help='permission is json')
+        args = self.parser.parse_args()
+        print(args.permission)
         filePath = os.path.join(os.path.join(os.getcwd(), 'router.json'))
         with open(filePath, 'r', encoding='utf-8') as load_f:
-            print(load_f)
             load_dict = json.load(load_f)
+        result = []
+        for item in load_dict["data"]:
+            pass
         return pretty_result(code.OK, data=load_dict["data"])

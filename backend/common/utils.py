@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 # author:jingtongyu
 # datetime:2020/6/7 10:14 下午
 # software: PyCharm
@@ -7,6 +7,7 @@
 import hashlib
 import datetime
 from .code import CODE_MSG_MAP
+import os
 
 
 def pretty_result(code, msg=None, data=None):
@@ -64,3 +65,14 @@ def falseReturn(data, msg):
         "msg": msg
     }
 
+
+def createFile(filePath):
+    if os.path.exists(filePath):
+        print('%s:存在' % filePath)
+    else:
+        try:
+            os.mkdir(filePath)
+            print('新建文件夹：%s' % filePath)
+        except Exception as e:
+            os.makedirs(filePath)
+            print('新建多层文件夹：%s' % filePath)

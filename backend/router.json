@@ -12,7 +12,7 @@
           "name": "Index",
           "component": "personalCenter/index",
           "meta": {
-            "title": "個人中心",
+            "title": "个人中心",
             "icon": "home",
             "affix": true,
             "noKeepAlive": true
@@ -21,9 +21,9 @@
       ]
     },
     {
-      "path": "/docManagement",
+      "path": "/doc",
       "component": "Layout",
-      "redirect": "noRedirect",
+      "redirect": "/docManagement",
       "children": [
         {
           "path": "/docManagement",
@@ -71,234 +71,36 @@
       ]
     },
     {
-      "path": "/byui",
+      "path": "/menu",
       "component": "Layout",
       "redirect": "noRedirect",
-      "name": "Byui",
-      "meta": { "title": "组件", "icon": "cloud" },
-      "alwaysShow": true,
       "children": [
         {
-          "path": "permission",
-          "name": "Permission",
-          "component": "byui/permission/index",
+          "path": "showDoc",
+          "name": "ShowDoc",
+          "component": "showDoc/index",
           "meta": {
-            "title": "权限控制",
-            "permissions": ["superAdmin"]
+            "title": "测试页",
+            "permissions": ["superAdmin", "admin"],
+            "icon": "cloud"
           }
-        },
-        {
-          "path": "menu1",
-          "component": "byui/nested/menu1/index",
-          "name": "Menu1",
-          "meta": { "title": "嵌套路由 1", "permissions": ["superAdmin"] },
-          "alwaysShow": true,
-          "children": [
-            {
-              "path": "menu1-1",
-              "component": "byui/nested/menu1/menu1-1/index",
-              "name": "Menu1-1",
-              "meta": { "title": "嵌套路由 1-1" },
-              "alwaysShow": true,
-              "children": [
-                {
-                  "path": "menu1-1-1-1",
-                  "component": "byui/nested/menu1/menu1-1/menu1-1-1/index",
-                  "name": "Menu1-1-1",
-                  "meta": { "title": "嵌套路由 1-1-1" }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "path": "table",
-          "name": "Table",
-          "component": "byui/table/index",
-          "meta": { "title": "表格", "permissions": ["superAdmin"] }
-        },
-        {
-          "path": "form",
-          "name": "Form",
-          "component": "byui/form/index",
-          "meta": { "title": "表单", "permissions": ["superAdmin"] }
-        },
-        {
-          "path": "element",
-          "name": "Element",
-          "component": "byui/element/index",
-          "meta": { "title": "常用组件", "permissions": ["superAdmin"] }
-        },
-        {
-          "path": "tree",
-          "name": "Tree",
-          "component": "byui/tree/index",
-          "meta": { "title": "树", "permissions": ["superAdmin"] }
-        },
-        {
-          "path": "card",
-          "name": "Card",
-          "component": "byui/card/index",
-          "meta": { "title": "卡片", "permissions": ["superAdmin"] }
-        },
-        {
-          "path": "magnifier",
-          "name": "Magnifier",
-          "component": "byui/magnifier/index",
-          "meta": { "title": "放大镜", "permissions": ["superAdmin"] }
-        },
-        {
-          "path": "waterfall",
-          "name": "Waterfall",
-          "component": "byui/waterfall/index",
-          "meta": {
-            "title": "瀑布屏",
-            "noKeepAlive": true,
-            "permissions": ["superAdmin"]
-          }
-        },
-        {
-          "path": "echarts",
-          "name": "Echarts",
-          "component": "byui/echarts/index",
-          "meta": { "title": "图表", "permissions": ["superAdmin"] }
-        },
-        {
-          "path": "loading",
-          "name": "Loading",
-          "component": "byui/loading/index",
-          "meta": { "title": "loading", "permissions": ["superAdmin"] }
-        },
-        {
-          "path": "player",
-          "name": "Player",
-          "component": "byui/player/index",
-          "meta": {
-            "title": "视频播放器",
-            "noKeepAlive": true,
-            "permissions": ["superAdmin"]
-          }
-        },
-        {
-          "path": "editor",
-          "name": "Editor",
-          "component": "byui/editor/index",
-          "meta": { "title": "富文本编辑器", "permissions": ["superAdmin"] }
-        },
-        {
-          "path": "qrCode",
-          "name": "QrCode",
-          "component": "byui/qrCode/index",
-          "meta": { "title": "二维码", "permissions": ["superAdmin"] }
-        },
-        {
-          "path": "backToTop",
-          "name": "BackToTop",
-          "component": "byui/backToTop/index",
-          "meta": { "title": "返回顶部", "permissions": ["superAdmin"] }
-        },
-        {
-          "path": "lodash",
-          "name": "Lodash",
-          "component": "byui/lodash/index",
-          "meta": { "title": "lodash", "permissions": ["superAdmin"] }
-        },
-        {
-          "path": "imgComparison",
-          "name": "ImgComparison",
-          "component": "byui/imgComparison/index",
-          "meta": { "title": "图像拖拽比对", "permissions": ["superAdmin"] }
-        },
-        {
-          "path": "codeGenerator",
-          "name": "CodeGenerator",
-          "component": "byui/codeGenerator/index",
-          "meta": { "title": "代码生成机", "permissions": ["superAdmin"] }
-        },
-        {
-          "path": "markdown",
-          "name": "Markdown",
-          "component": "byui/markdown/index",
-          "meta": { "title": "markdown阅读器", "permissions": ["superAdmin"] }
-        },
-        {
-          "path": "smallComponents",
-          "name": "SmallComponents",
-          "component": "byui/smallComponents/index",
-          "meta": { "title": "小组件", "permissions": ["superAdmin"] }
-        },
-        {
-          "path": "icon",
-          "name": "Icon",
-          "component": "byui/icon/index",
-          "meta": { "title": "常规图标", "permissions": ["superAdmin"] }
-        },
-        {
-          "path": "colorfulIcon",
-          "name": "ColorfulIcon",
-          "component": "byui/icon/colorfulIcon",
-          "meta": { "title": "多彩图标", "permissions": ["superAdmin"] }
-        },
-        {
-          "path": "remixIcon",
-          "name": "RemixIcon",
-          "component": "byui/icon/remixIcon",
-          "meta": {
-            "title": "小清新图标(图标过多打开会慢)",
-            "permissions": ["superAdmin"]
-          }
-        },
-        {
-          "path": "upload",
-          "name": "Upload",
-          "component": "byui/upload/index",
-          "meta": { "title": "上传", "permissions": ["superAdmin"] }
-        },
-        {
-          "path": "sticky",
-          "name": "Sticky",
-          "component": "byui/sticky/index",
-          "meta": { "title": "sticky吸附", "permissions": ["superAdmin"] }
-        },
-        {
-          "path": "logs",
-          "name": "Log",
-          "component": "byui/errorLog/index",
-          "meta": { "title": "错误日志模拟", "permissions": ["superAdmin"] }
-        },
-        {
-          "path": "news",
-          "name": "News",
-          "component": "byui/news/index",
-          "meta": { "title": "新闻（可能存在跨域）", "permissions": ["superAdmin"] }
-        },
-        {
-          "path": "more",
-          "name": "More",
-          "component": "byui/more/index",
-          "meta": { "title": "更多组件", "permissions": ["superAdmin"] }
         }
       ]
     },
     {
-      "path": "/error",
-      "component": "EmptyLayout",
+      "path": "/menu2",
+      "component": "Layout",
       "redirect": "noRedirect",
-      "name": "Error",
-      "meta": { "title": "错误页", "icon": "bug" },
-      "alwaysShow": true,
       "children": [
         {
-          "path": "/401",
-          "name": "401",
-          "component": "401",
-          "meta": { "title": "401" }
-        },
-        {
-          "path": "/404",
-          "name": "404",
-          "component": "404",
-          "meta": { "title": "404" }
+          "path": "/showDoc2",
+          "name": "/ShowDoc2",
+          "component": "showDoc/index",
+          "meta": {
+            "title": "测试页2",
+            "permissions": ["superAdmin", "admin"],
+            "icon": "cloud"
+          }
         }
       ]
     }

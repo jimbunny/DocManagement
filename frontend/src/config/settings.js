@@ -7,7 +7,7 @@ module.exports = {
     // 放置生成的静态资源 (js、css、img、fonts) 的 (相对于 outputDir 的) 目录。
     assetsDir: "static",
     // 开发环境每次保存时是否输出为eslint编译警告
-    lintOnSave: true,
+    lintOnSave: false,
     // 进行编译的依赖
     transpileDependencies: ["vue-echarts", "resize-detector"],
     //标题 （包括初次加载雪花屏的标题 页面的标题 浏览器的标题）
@@ -83,4 +83,6 @@ module.exports = {
     errorCode: -1,
     // token 刷新时间
     tokenExpiresTime: 10,
+    // 默认语言
+    language: "zh",
 };

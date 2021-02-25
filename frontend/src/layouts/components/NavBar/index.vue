@@ -18,13 +18,13 @@
           <full-screen-bar @refresh="refreshRoute"></full-screen-bar>
           <theme-bar></theme-bar>
           <byui-icon
-            title="重载路由"
+            :title="$t('header.refresh')"
             :pulse="pulse"
             :icon="['fas', 'redo']"
             @click="refreshRoute"
           />
+          <lang-select class="right-menu-item hover-effect" />
           <avatar></avatar>
-          <lang-select></lang-select>
           <!--  <byui-icon
             title="退出系统"
             :icon="['fas', 'sign-out-alt']"

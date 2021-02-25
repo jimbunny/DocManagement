@@ -1,8 +1,5 @@
 <template>
   <div class="roleManagement-container">
-    <el-divider content-position="left">
-      演示环境仅做基础功能展示，若想实现不同角色的真实菜单配置，需将settings.js路由加载模式改为all模式，由后端全面接管路由渲染与权限控制
-    </el-divider>
     <byui-query-form>
       <byui-query-form-left-panel :span="12">
         <el-button icon="el-icon-plus" type="primary" @click="handleEdit"
@@ -16,8 +13,8 @@
         <el-form :inline="true" :model="queryForm" @submit.native.prevent>
           <el-form-item>
             <el-input
-              v-model.trim="queryForm.permission"
-              placeholder="请输入查询条件"
+              v-model.trim="queryForm.postion"
+              placeholder="请输入职位"
               clearable
             />
           </el-form-item>
@@ -38,7 +35,11 @@
     >
       <el-table-column type="selection"></el-table-column>
       <el-table-column prop="id" label="id"></el-table-column
-      ><el-table-column prop="permission" label="权限码"></el-table-column>
+      ><el-table-column prop="department" label="部门"></el-table-column>
+      <el-table-column prop="departmentID" label="部门ID"></el-table-column>
+      <el-table-column prop="postion" label="职位"></el-table-column>
+      <el-table-column prop="postionID" label="职位ID"></el-table-column>
+      <el-table-column prop="permission" label="权限码"></el-table-column>
       <el-table-column fixed="right" label="操作" width="200">
         <template v-slot="scope">
           <el-button type="text" @click="handleEdit(scope.row)"
@@ -67,6 +68,7 @@
 <script>
 import { getList, doDelete } from "@/api/roleManagement";
 import Edit from "./components/RoleManagementEdit";
+import { okCode, errorCode } from "@/config/settings";
 
 export default {
   name: "RoleManagement",
@@ -82,7 +84,7 @@ export default {
       queryForm: {
         pageNo: 1,
         pageSize: 10,
-        permission: "",
+        postion: "",
       },
     };
   },
@@ -102,17 +104,23 @@ export default {
     },
     handleDelete(row) {
       if (row.id) {
-        this.$baseConfirm("你确定要删除当前项吗", null, () => {
-          doDelete({ ids: row.id }).then((res) => {
-            this.$baseMessage(res.msg, "success");
-            this.fetchData();
-          });
-        });
+        this.$baseConfirm(
+          "你确定要删除当前职位为" + row.postion + "的数据吗",
+          null,
+          () => {
+            doDelete({ ids: [row.id] }).then((res) => {
+              this.$baseMessage(res.msg, "success");
+              this.fetchData();
+            });
+          }
+        );
       } else {
         if (this.selectRows.length > 0) {
-          const ids = this.selectRows.map((item) => item.id).join();
+          const ids = [];
+          this.selectRows.map((item) => ids.push(item.id));
+          // const ids = this.selectRows.map((item) => item.id).join();
           this.$baseConfirm("你确定要删除选中项吗", null, () => {
-            doDelete({ ids: row.id }).then((res) => {
+            doDelete({ ids: ids }).then((res) => {
               this.$baseMessage(res.msg, "success");
               this.fetchData();
             });
@@ -138,11 +146,16 @@ export default {
     fetchData() {
       this.listLoading = true;
       getList(this.queryForm).then((res) => {
-        this.list = res.data;
-        this.total = res.totalCount;
-        setTimeout((_) => {
-          this.listLoading = false;
-        }, 300);
+        const { code, msg, data } = res;
+        if (code === okCode) {
+          this.list = data.items;
+          this.total = data.totalCount;
+          setTimeout((_) => {
+            this.listLoading = false;
+          }, 300);
+        } else {
+          this.$baseMessage(msg || `获取权限信息失败！`, "error");
+        }
       });
     },
   },

@@ -1,24 +1,65 @@
 <template>
   <div class="editor-container">
     <el-row>
-      <el-col :xs="24" :sm="24" :md="8" :lg="4" :xl="4">
-        <el-tree
+      <el-col :xs="8" :sm="8" :md="8" :lg="4" :xl="4">
+        <!--<el-tree
           :data="data"
           :props="defaultProps"
-          node-key="id"
+          node-key="value"
           :default-expanded-keys="['root']"
           @node-click="handleNodeClick"
-        ></el-tree>
+        ></el-tree>-->
+        <el-input v-model="filterText" placeholder="输入关键字进行过滤">
+        </el-input>
+        <div class="block">
+          <el-tree
+            ref="tree"
+            class="filter-tree"
+            :data="data"
+            :props="defaultProps"
+            node-key="value"
+            default-expand-all
+            :expand-on-click-node="false"
+            :filter-node-method="filterNode"
+            @node-click="handleNodeClick"
+          >
+            // eslint-disable-next-line vue/no-template-shadow
+            <span slot-scope="{ node, data }" class="custom-tree-node">
+              <span>{{ node.label }}</span>
+              <span>
+                <el-button type="text" size="mini" @click="() => append(data)">
+                  Append
+                </el-button>
+                <el-button
+                  type="text"
+                  size="mini"
+                  @click="() => remove(node, data)"
+                >
+                  Delete
+                </el-button>
+              </span>
+            </span>
+          </el-tree>
+        </div>
       </el-col>
-      <el-col :xs="24" :sm="24" :md="16" :lg="20" :xl="20">
+      <el-col :xs="16" :sm="16" :md="16" :lg="20" :xl="20">
         <el-form ref="form" :model="form" :rules="rules" label-width="80px">
           <el-form-item label="标题" prop="title">
             <el-input v-model="form.title" maxlength="20"></el-input>
           </el-form-item>
-          <el-form-item label="所属模块" prop="module">
-            <el-select v-model="form.module">
-              <el-option label="新闻动态" value="1"></el-option>
-              <el-option label="实时热点" value="2"></el-option>
+          <el-form-item label="菜单" prop="menu">
+            <el-cascader
+              v-model="form.menu"
+              :options="data"
+              :props="{ expandTrigger: 'hover' }"
+              @change="handleChange"
+            >
+            </el-cascader>
+          </el-form-item>
+          <el-form-item label="语言" prop="language">
+            <el-select v-model="form.language">
+              <el-option label="中文" value="zh"></el-option>
+              <el-option label="泰语" value="thai"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="内容" prop="content">
@@ -54,7 +95,9 @@ import { quillEditor } from "vue-quill-editor";
 import "quill/dist/quill.core.css";
 import "quill/dist/quill.snow.css";
 import "quill/dist/quill.bubble.css";
-import { getRouterList as getList } from "@/api/router";
+import { getTree } from "@/api/menuManagement";
+import { getFile, doAdd as addFile } from "@/api/docManagement";
+import { okCode, errorCode } from "@/config/settings";
 
 export default {
   name: "Editor",
@@ -64,7 +107,7 @@ export default {
       data: [],
       defaultProps: {
         children: "children",
-        label: "label",
+        label: "value",
       },
       list: [],
       listLoading: true,
@@ -73,9 +116,11 @@ export default {
       dialogTableVisible: false,
       form: {
         title: "",
-        module: "",
+        menu: [],
+        language: "",
         content: "",
       },
+      filterText: "",
       editorOption: {
         placeholder: "",
         modules: {
@@ -103,10 +148,17 @@ export default {
             trigger: "blur",
           },
         ],
-        module: [
+        menu: [
           {
             required: true,
-            message: "请选择模块",
+            message: "请选择菜单",
+            trigger: "change",
+          },
+        ],
+        language: [
+          {
+            required: true,
+            message: "请选择语言",
             trigger: "change",
           },
         ],
@@ -120,18 +172,36 @@ export default {
       },
     };
   },
+  watch: {
+    filterText(val) {
+      this.$refs.tree.filter(val);
+    },
+  },
+  async created() {
+    const roleData = await getTree();
+    this.data = roleData.data;
+    // this.fetchData();
+  },
   methods: {
     async fetchData() {
       this.listLoading = true;
-
-      const { data } = await getList();
+      const { data } = await getTree();
       this.list = data;
       setTimeout(() => {
         this.listLoading = false;
       }, 300);
     },
     handleNodeClick(data) {
-      this.fetchData();
+      const language = "zh";
+      getFile({ language: language, menu: data.value }).then((res) => {
+        const { code, msg, data } = res;
+        if (code === okCode) {
+          this.form = data;
+          this.$baseMessage("get doc successful!", "success");
+        } else {
+          this.$baseMessage(msg || `get doc failed！`, "error");
+        }
+      });
     },
     onEditorBlur(quill) {
       // 失去焦点事件
@@ -171,11 +241,40 @@ export default {
           }
         });
         if (valid) {
-          this.$baseMessage("submit!", "success");
+          addFile(this.form).then((res) => {
+            const { code, msg, data } = res;
+            if (code === okCode) {
+              this.$baseMessage("add doc successful!", "success");
+            } else {
+              this.$baseMessage(msg || `add doc failed！`, "error");
+            }
+          });
         } else {
           return false;
         }
       });
+    },
+    handleChange(value) {
+      console.log(value);
+    },
+    append(data) {
+      const newChild = { value: "testtest", label: "testtest", children: [] };
+      if (!data.children) {
+        this.$set(data, "children", []);
+      }
+      data.children.push(newChild);
+    },
+
+    remove(node, data) {
+      const parent = node.parent;
+      const children = parent.data.children || parent.data;
+      const index = children.findIndex((d) => d.id === data.id);
+      children.splice(index, 1);
+    },
+
+    filterNode(value, data) {
+      if (!value) return true;
+      return data.label.indexOf(value) !== -1;
     },
   },
 };
@@ -199,5 +298,13 @@ export default {
       }
     }
   }
+}
+.custom-tree-node {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  padding-right: 8px;
 }
 </style>

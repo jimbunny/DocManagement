@@ -137,7 +137,7 @@ export default {
   mounted() {
     if ("production" !== process.env.NODE_ENV) {
       this.loginForm.username = "superAdmin";
-      this.loginForm.password = "12345678";
+      this.loginForm.password = "admin123456";
     }
   },
   methods: {

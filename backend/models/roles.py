@@ -12,36 +12,30 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import time
 
 
-class UsersModel(db.Model, BaseModel):
-    __tablename__ = 'users'
+class RolesModel(db.Model, BaseModel):
+    __tablename__ = 'roles'
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(250),  unique=True, nullable=False)
-    username = db.Column(db.String(250),  unique=True, nullable=False)
-    password = db.Column(db.String(250), nullable=False)
-    permission = db.Column(db.String(50), default='guest', nullable=False)
-    avatar = db.Column(db.String(500), default="http://beautiful.panm.cn/vue-admin-beautiful/static/img/user.20010688.gif", nullable=False)
-    login_time = db.Column(db.Integer, default=int(time.time()))
+    department = db.Column(db.String(250),  unique=True, nullable=False)
+    departmentID = db.Column(db.String(250),  unique=True, nullable=False)
+    postion = db.Column(db.String(250),  unique=True, nullable=False)
+    postionID = db.Column(db.String(250), unique=True, nullable=False)
+    permission = db.Column(db.String(50), default='test', nullable=False)
 
-    def __init__(self, username, password, email, permission):
-        self.username = username
-        self.password = password
-        self.email = email
+    def __init__(self, department, departmentID, postion, postionID, permission):
+        self.department = department
+        self.departmentID = departmentID
+        self.postion = postion
+        self.postionID = postionID
         self.permission = permission
 
     def __str__(self):
         return "Users(id='%s')" % self.id
 
-    def set_password(self, password):
-        return generate_password_hash(password)
-
-    def check_password(self, hash, password):
-        return check_password_hash(hash, password)
-
     def paginate(self, page, per_page):
         return self.query.paginate(page=page, per_page=per_page, error_out=False)
 
-    def filter_by_username(self, username):
-        return self.query.filter(self.username.like("%" + username + "%")).all()
+    def filter_by_postion(self, postion):
+        return self.query.filter(self.postion.like("%" + postion + "%")).all()
 
     def get(self, _id):
         return self.query.filter_by(id=_id).first()

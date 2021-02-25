@@ -4,6 +4,6 @@ export function getRouterList(data) {
   return request({
     url: "/menu/navigate",
     method: "get",
-    data,
+    params: data,
   });
 }

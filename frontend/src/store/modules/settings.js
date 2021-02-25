@@ -1,4 +1,5 @@
 import defaultSettings from "@/config/settings";
+import Cookies from "js-cookie";
 
 const { tagsBar, logo, layout, header, themeBar, skeleton } = defaultSettings;
 const theme = JSON.parse(localStorage.getItem("BYUI-VUE-THEME")) || "";
@@ -11,6 +12,7 @@ const state = {
   skeleton,
   device: "desktop",
   themeBar,
+  language: "zh",
 };
 const getters = {
   collapse: (state) => state.collapse,
@@ -21,6 +23,7 @@ const getters = {
   tagsBar: (state) => state.tagsBar,
   themeBar: (state) => state.themeBar,
   skeleton: (state) => state.skeleton,
+  language: (state) => state.language,
 };
 const mutations = {
   changeLayout: (state, layout) => {
@@ -44,6 +47,10 @@ const mutations = {
   toggleDevice: (state, device) => {
     state.device = device;
   },
+  setLanguage: (state, language) => {
+    state.language = language;
+    Cookies.set("language", language);
+  },
 };
 const actions = {
   changeLayout({ commit }, layout) {
@@ -66,6 +73,9 @@ const actions = {
   },
   toggleDevice({ commit }, device) {
     commit("toggleDevice", device);
+  },
+  setLanguage({ commit }, language) {
+    commit("setLanguage", language);
   },
 };
 export default { state, getters, mutations, actions };
