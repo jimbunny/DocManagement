@@ -1,16 +1,50 @@
 <template>
   <div class="menuManagement-container">
     <el-row>
-      <el-col :xs="24" :sm="24" :md="8" :lg="4" :xl="4">
-        <el-tree
-          :data="data"
-          :props="defaultProps"
-          node-key="id"
-          :default-expanded-keys="['root']"
-          @node-click="handleNodeClick"
-        ></el-tree>
+      <el-col :xs="24" :sm="24" :md="8" :lg="6" :xl="6">
+        <el-input v-model="filterText" placeholder="输入关键字进行过滤">
+        </el-input>
+        <div class="block">
+          <el-tree
+            ref="tree"
+            class="filter-tree"
+            :data="data"
+            :props="defaultProps"
+            node-key="path"
+            default-expand-all
+            :expand-on-click-node="false"
+            :filter-node-method="filterNode"
+            @node-click="handleNodeClick"
+          >
+            // eslint-disable-next-line vue/no-template-shadow
+            <span slot-scope="{ node, data }" class="custom-tree-node">
+              <template>
+                <!--<byui-icon :icon="['fas', data.meta.icon]" /> -->
+                <span v-if="!data.meta">{{ data.path }}</span>
+                <span v-else>{{ generateTitle(data.meta.title) }}</span>
+                <span>
+                  <el-button
+                    v-if="data.alwaysShow"
+                    type="text"
+                    size="mini"
+                    @click="() => append(data)"
+                  >
+                    Append
+                  </el-button>
+                  <el-button
+                    type="text"
+                    size="mini"
+                    @click="() => remove(node, data)"
+                  >
+                    Delete
+                  </el-button>
+                </span>
+              </template>
+            </span>
+          </el-tree>
+        </div>
       </el-col>
-      <el-col :xs="24" :sm="24" :md="16" :lg="20" :xl="20">
+      <el-col :xs="24" :sm="24" :md="16" :lg="18" :xl="18">
         <byui-query-form>
           <byui-query-form-left-panel :span="12">
             <el-button icon="el-icon-plus" type="primary" @click="handleEdit">
@@ -18,105 +52,113 @@
             </el-button>
           </byui-query-form-left-panel>
         </byui-query-form>
-        <el-table
-          v-loading="listLoading"
-          :data="list"
-          :element-loading-text="elementLoadingText"
-          row-key="path"
-          border
-          default-expand-all
-          :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
+        <el-form
+          ref="ruleForm"
+          :model="menu"
+          status-icon
+          :rules="rules"
+          label-width="100px"
+          class="demo-ruleForm"
         >
-          <el-table-column
-            show-overflow-tooltip
-            prop="name"
-            label="name"
-          ></el-table-column>
-          <el-table-column
-            show-overflow-tooltip
-            prop="path"
-            label="路径"
-          ></el-table-column>
-          <el-table-column show-overflow-tooltip label="是否隐藏">
-            <template #default="{ row }">
-              <span>
-                {{ row.hidden ? "是" : "否" }}
+          <el-form-item label="alwaysShow" prop="alwaysShow">
+            <el-switch
+              v-model="menu.alwaysShow"
+              active-color="#13ce66"
+              inactive-color="#ff4949"
+              disabled
+            >
+            </el-switch>
+          </el-form-item>
+          <el-form-item label="name" prop="name">
+            <el-input
+              v-model="menu.name"
+              autocomplete="off"
+              disabled
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="path" prop="path">
+            <el-input v-model="menu.path" disabled></el-input>
+          </el-form-item>
+          <el-form-item label="中文" prop="zh">
+            <el-input v-model="menu.zh" placeholder="请输入中文标题"></el-input>
+          </el-form-item>
+          <el-form-item label="泰文" prop="thai">
+            <el-input
+              v-model="menu.thai"
+              placeholder="请输入泰语标题"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="icon" prop="icon">
+            <!-- <el-input v-model="menu.checkPass" type="password" autocomplete="off"></el-input> -->
+            <el-autocomplete
+              v-model="menu.icon"
+              popper-class="my-autocomplete"
+              :fetch-suggestions="querySearch"
+              placeholder="请选择图标"
+              style="width: 100%;"
+              @select="handleSelect"
+            >
+              <i
+                slot="suffix"
+                class="el-icon-edit el-input__icon"
+                @click="handleIconClick"
+              >
+              </i>
+              <template slot-scope="{ item }">
+                <!--      <div class="name">{{ item.value }}</div>
+                <span class="addr">{{ item.address }}</span> -->
+
+                <el-card shadow="hover" style="cursor: pointer;">
+                  <byui-icon :icon="['fas', item]" />
+                </el-card>
+                <!--<div class="icon-text">{{ item }}</div>-->
+              </template>
+            </el-autocomplete>
+          </el-form-item>
+          <el-form-item label="permissions" prop="permissions">
+            <el-tree
+              ref="permissionTree"
+              :props="props"
+              :data="permissions"
+              node-key="permission"
+              show-checkbox
+              default-expand-all
+              @check-change="handleCheckChange"
+            >
+              <span slot-scope="{ node, data }" class="custom-tree-node">
+                <span>{{ node.label }}</span>
               </span>
-            </template>
-          </el-table-column>
-          <el-table-column show-overflow-tooltip label="是否一直显示当前节点">
-            <template #default="{ row }">
-              <span>
-                {{ row.alwaysShow ? "是" : "否" }}
-              </span>
-            </template>
-          </el-table-column>
-          <el-table-column
-            show-overflow-tooltip
-            prop="component"
-            label="vue文件路径"
-          ></el-table-column>
-          <el-table-column
-            show-overflow-tooltip
-            prop="redirect"
-            label="重定向"
-          ></el-table-column>
-          <el-table-column
-            show-overflow-tooltip
-            prop="meta.title"
-            label="标题"
-          ></el-table-column>
-          <el-table-column show-overflow-tooltip label="图标">
-            <template #default="{ row }">
-              <span v-if="row.meta">
-                <byui-icon
-                  v-if="row.meta.icon"
-                  :icon="['fas', row.meta.icon]"
-                ></byui-icon>
-              </span>
-            </template>
-          </el-table-column>
-          <el-table-column show-overflow-tooltip label="是否固定">
-            <template #default="{ row }">
-              <span v-if="row.meta">
-                {{ row.meta.affix ? "是" : "否" }}
-              </span>
-            </template>
-          </el-table-column>
-          <el-table-column show-overflow-tooltip label="是否无缓存">
-            <template #default="{ row }">
-              <span v-if="row.meta">
-                {{ row.meta.noKeepAlive ? "是" : "否" }}
-              </span>
-            </template>
-          </el-table-column>
-          <el-table-column show-overflow-tooltip label="badge">
-            <template #default="{ row }">
-              <span v-if="row.meta">
-                {{ row.meta.badge }}
-              </span>
-            </template>
-          </el-table-column>
-          <el-table-column show-overflow-tooltip label="操作" width="200">
-            <template #default="{ row }">
-              <el-button type="text" @click="handleEdit(row)">编辑</el-button>
-              <el-button type="text" @click="handleDelete(row)">删除</el-button>
-            </template>
-          </el-table-column>
-        </el-table>
+            </el-tree>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="submitForm('ruleForm')"
+              >更新</el-button
+            >
+            <el-button @click="resetForm('ruleForm')">重置</el-button>
+          </el-form-item>
+        </el-form>
       </el-col>
     </el-row>
 
-    <edit ref="edit" @fetch-data="fetchData"></edit>
+    <edit ref="edit" @fetch-data="data"></edit>
   </div>
 </template>
 
 <script>
 import { getRouterList as getList } from "@/api/router";
+import { updateRouter } from "@/api/router";
 import { getList as getRoleList } from "@/api/roleManagement";
 import { getTree, doDelete } from "@/api/menuManagement";
 import Edit from "./components/MenuManagementEdit";
 import { okCode, errorCode } from "@/config/settings";
+import { generateTitle } from "@/utils/i18n";
+import { getIconList } from "@/api/icon";
+import {
+  getLanguage,
+  getTitle,
+  updateTitle,
+  deleteTitle,
+} from "@/api/language";
 
 export default {
   name: "MenuManagement",
@@ -124,46 +166,148 @@ export default {
   data() {
     return {
       data: [],
+      filterText: "",
       defaultProps: {
         children: "children",
-        label: "postion",
+        label: "path",
       },
-      list: [],
+      props: {
+        label: "permission",
+        children: "children",
+      },
       listLoading: true,
       elementLoadingText: "正在加载...",
+      menu: {
+        name: "",
+        path: "",
+        icon: "",
+        zh: "",
+        thai: "",
+        alwaysShow: false,
+        permissions: [],
+      },
+      rules: {
+        // type: [{ required: true, trigger: "blur", message: "请选择类型" }],
+        name: [{ required: true, trigger: "blur", message: "请输入名称" }],
+        path: [{ required: true, trigger: "blur", message: "请输入路径" }],
+        thai: [{ required: true, trigger: "blur", message: "请输入泰文标题" }],
+        zh: [{ required: true, trigger: "blur", message: "请输入中文标题" }],
+        // icon: [{ required: true, trigger: "blur", message: "请选择图标" }],
+        permissions: [
+          { required: true, trigger: "blur", message: "请选择角色" },
+        ],
+      },
+      permissions: [],
+      queryIcon: [],
+      queryForm: {
+        pageNo: 1,
+        pageSize: 72,
+        title: "",
+      },
     };
   },
+  watch: {
+    filterText(val) {
+      this.$refs.tree.filter(val);
+    },
+  },
   async created() {
-    const res = await getRoleList({
-      pageNo: 1,
-      pageSize: 10000,
-      postion: "",
-    });
+    // 获取菜单信息
+    const res = await getList({ permission: "admin" });
     const { code, msg, data } = res;
     if (code === okCode) {
-      this.data = [
-        {
-          id: "root",
-          postion: "全部角色",
-          postionID: "admin",
-          department: "admin",
-          departmentID: "admin",
-          permission: "admin",
-          children: data.items,
-        },
-      ];
+      this.data = data;
     } else {
-      this.$baseMessage(msg || `获取菜单权限信息失败！`, "error");
+      this.$baseMessage(msg || `获取菜单信息失败！`, "error");
     }
-    this.fetchData(data.items[0].permission);
+    //获取权限信息
+    this.getPermissionData();
+    this.fetchIconData();
+    // this.getTitleThai();
+    // this.getTitleZh();
   },
   methods: {
-    handleEdit(row) {
-      if (row.path) {
-        this.$refs["edit"].showEdit(row);
-      } else {
-        this.$refs["edit"].showEdit();
+    generateTitle,
+    initData(orgList, menu) {
+      if (orgList.length) {
+        for (var i = 0; i < orgList.length; i++) {
+          if (orgList[i].path == menu.path) {
+            if (orgList[i].children) {
+              menu.children = orgList[i].children;
+            }
+            orgList[i]["name"] = menu.name;
+            orgList[i]["path"] = menu.path;
+            orgList[i]["alwaysShow"] = menu.alwaysShow;
+            if (menu.icon) {
+              orgList[i]["meta"]["icon"] = menu.icon;
+            }
+            if (menu.permissions) {
+              orgList[i]["meta"]["permissions"] = menu.permissions;
+            }
+            orgList[i]["meta"]["title"] = menu.name;
+            orgList[i]["meta"]["component"] = "showDoc/index";
+            break;
+          }
+          if (orgList[i].children) {
+            // 如果有 children 则继续递归遍历
+            this.initData(orgList[i].children, menu);
+          }
+        }
       }
+      return orgList;
+    },
+    async submitForm(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          this.data = this.initData(this.data, this.menu);
+          updateRouter({ router: this.data }).then((res) => {
+            if (res.code === okCode) {
+              this.data = res.data;
+            } else {
+              this.$baseMessage(`更新菜单信息失败！`, "error");
+            }
+          });
+          updateTitle({
+            language: "thai",
+            name: this.menu.name,
+            title: this.menu.thai,
+            type: "update",
+          }).then((res) => {
+            if (res.code === okCode) {
+            } else {
+              this.$baseMessage(`更新菜单标题信息失败！(thai)`, "error");
+            }
+          });
+          updateTitle({
+            language: "zh",
+            name: this.menu.name,
+            title: this.menu.zh,
+            type: "update",
+          }).then((res) => {
+            if (res.code === okCode) {
+            } else {
+              this.$baseMessage(`更新菜单标题信息失败！(zh)`, "error");
+            }
+          });
+          this.$baseMessage(`更新菜单信息成功！`, "success");
+          setTimeout(() => {
+            this.$router.go(0);
+          }, 1000);
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
+    },
+    resetForm(formName) {
+      // this.$refs[formName].resetFields();
+      this.menu.zh = "";
+      this.menu.thai = "";
+      this.menu.icon = "";
+      this.menu.permissions = [];
+    },
+    handleEdit() {
+      this.$refs["edit"].showEdit(this.data, "root");
     },
     handleDelete(row) {
       if (row.id) {
@@ -172,6 +316,29 @@ export default {
           this.$baseMessage(msg, "success");
           this.fetchData();
         });
+      }
+    },
+    async getPermissionData() {
+      const res = await getRoleList({
+        pageNo: 1,
+        pageSize: 10000,
+        postion: "",
+      });
+      const { code, msg, data } = res;
+      if (code === okCode) {
+        var tmp = [];
+        for (var i = 0, len = data.items.length; i < len; i++) {
+          if (tmp.indexOf(data.items[i].permission) != -1) {
+          } else {
+            tmp.push(data.items[i].permission);
+          }
+        }
+        for (var i = 0, len = tmp.length; i < len; i++) {
+          this.permissions.push({ permission: tmp[i] });
+        }
+        // this.permissions = data.items;
+      } else {
+        this.$baseMessage(msg || `获取菜单权限信息失败！`, "error");
       }
     },
     async fetchData(permission) {
@@ -186,9 +353,274 @@ export default {
         this.$baseMessage(msg || `获取权限菜单信息失败！`, "error");
       }
     },
-    handleNodeClick(data) {
-      this.fetchData(data.permission);
+    async handleNodeClick(data) {
+      this.menu.name = data.name;
+      this.menu.path = data.path;
+      this.menu.alwaysShow = data.alwaysShow;
+      if (data.meta) {
+        this.menu.icon = data.meta.icon;
+        this.menu.permissions = [];
+        getTitle({ language: "thai", title: data.meta.title }).then((res) => {
+          if (res.code === okCode) {
+            this.menu.thai = res.data.title;
+          } else {
+            return this.$baseMessage(
+              res.msg || `获取菜单语言信息失败！(thai)`,
+              "error"
+            );
+          }
+        });
+        getTitle({ language: "zh", title: data.meta.title }).then((res) => {
+          if (res.code === okCode) {
+            this.menu.zh = res.data.title;
+          } else {
+            return this.$baseMessage(
+              res.msg || `获取菜单语言信息失败！(zh)`,
+              "error"
+            );
+          }
+        });
+        // this.menu.thai = this.thai["route"][data.meta.title];
+        // this.menu.zh = this.zh["route"][data.meta.title];
+        if (data.meta.permissions) {
+          this.menu.permissions = data.meta.permissions;
+        } else {
+          for (var i = 0, len = this.permissions.length; i < len; i++) {
+            this.menu.permissions.push(this.permissions[i].permission);
+          }
+        }
+      } else {
+        this.menu.icon = "";
+        this.menu.permissions = [];
+        this.menu.thai = "";
+        this.menu.zh = "";
+        for (var i = 0, len = this.permissions.length; i < len; i++) {
+          this.menu.permissions.push(this.permissions[i].permission);
+        }
+      }
+      this.$refs.permissionTree.setCheckedKeys(this.menu.permissions);
     },
+    handleChange(value) {
+      console.log(value);
+    },
+    append(data) {
+      this.$refs["edit"].showEdit(this.data, data);
+      // const newChild = { value: "testtest", label: "testtest", children: [] };
+      // if (!data.children) {
+      //   this.$set(data, "children", []);
+      // }
+      // data.children.push(newChild);
+    },
+
+    remove(node, data) {
+      if (data) {
+        this.$baseConfirm("你确定要删除当前项吗", null, async () => {
+          const parent = node.parent;
+          const children = parent.data.children || parent.data;
+          const index = children.findIndex((d) => d.path === data.path);
+          children.splice(index, 1);
+          updateRouter({ router: this.data }).then((res) => {
+            if (res.code === okCode) {
+              this.data = res.data;
+            } else {
+              this.$baseMessage(`删除菜单信息失败！`, "error");
+            }
+          });
+          if (data.name) {
+            deleteTitle({
+              language: "thai",
+              name: data.name,
+            }).then((res) => {
+              if (res.code === okCode) {
+              } else {
+                this.$baseMessage(
+                  res.msg || `删除菜单标题信息失败！(thai)`,
+                  "error"
+                );
+              }
+            });
+            deleteTitle({
+              language: "zh",
+              name: data.name,
+            }).then((res) => {
+              if (res.code === okCode) {
+              } else {
+                this.$baseMessage(
+                  res.msg || `删除菜单标题信息失败！(thai)`,
+                  "error"
+                );
+              }
+            });
+          }
+          this.$baseMessage("删除菜单标题信息成功！");
+          setTimeout(() => {
+            this.$router.go(0);
+          }, 1000);
+          this.fetchData();
+        });
+      }
+    },
+
+    filterNode(value, data) {
+      if (!value) return true;
+      if (data.meta) {
+        return this.generateTitle(data.meta.title).indexOf(value) !== -1;
+      } else {
+        return true;
+      }
+      // generateTitle(data.meta.title)
+      // return generateTitle(data.meta).indexOf(value) !== -1;
+    },
+    querySearch(queryString, cb) {
+      var queryIcon = this.queryIcon;
+      var results = queryString
+        ? queryIcon.filter(this.createFilter(queryString))
+        : queryIcon;
+      // 调用 callback 返回建议列表的数据
+      cb(results);
+    },
+    createFilter(queryString) {
+      return (queryIcon) => {
+        return queryIcon.toLowerCase().indexOf(queryString.toLowerCase()) != -1;
+      };
+    },
+    handleSelect(item) {
+      this.menu.icon = item;
+    },
+    handleIconClick(ev) {
+      console.log(ev);
+    },
+    handleSizeChange(val) {
+      this.queryForm.pageSize = val;
+      this.fetchIconData();
+    },
+    handleCurrentChange(val) {
+      this.queryForm.pageNo = val;
+      this.fetchIconData();
+    },
+    queryData() {
+      this.queryForm.pageNo = 1;
+      this.fetchIconData();
+    },
+    fetchIconData() {
+      getIconList(this.queryForm).then((res) => {
+        const data = res.data.data;
+        this.queryIcon = data;
+        this.allIcon = data;
+        this.total = res.data.totalCount;
+      });
+    },
+    handleCopyIcon(index, event) {
+      const copyText = `<byui-icon :icon="['fas', '${this.queryIcon[index]}']"></byui-icon>`;
+      this.copyText = copyText;
+      clip(copyText, event);
+    },
+    handleCheckChange(data, checked, indeterminate) {
+      this.menu.permissions = this.$refs.permissionTree.getCheckedKeys();
+    },
+  },
+  renderContent(h, { node, data, store }) {
+    return (
+      <span class="custom-tree-node">
+        <span>{node.postion}</span>
+      </span>
+    );
   },
 };
 </script>
+<style lang="scss" scoped>
+.news {
+  &-title {
+    text-align: center;
+  }
+
+  &-content {
+    ::v-deep {
+      p {
+        line-height: 30px;
+
+        img {
+          display: block;
+          margin-right: auto;
+          margin-left: auto;
+        }
+      }
+    }
+  }
+}
+.custom-tree-node {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  padding-right: 8px;
+}
+.my-autocomplete {
+  li {
+    line-height: normal;
+    padding: 7px;
+
+    .name {
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    .addr {
+      font-size: 12px;
+      color: #b4b4b4;
+    }
+
+    .highlighted .addr {
+      color: #ddd;
+    }
+  }
+}
+.icon-container {
+  ::v-deep {
+    .el-card__body {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* 垂直居中 */
+      justify-content: center; /* 水平居中 */
+
+      svg:not(:root).svg-inline--fa {
+        font-size: 35px;
+        font-weight: bold;
+        color: $base-color-gray;
+        text-align: center;
+        vertical-align: middle;
+        pointer-events: none;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .icon-text {
+    height: 30px;
+    margin-top: -15px;
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 30px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+</style>
+<style lang="scss">
+.el-autocomplete-suggestion li {
+    padding: 0 20px;
+    margin: 0;
+    line-height: 20px;
+    width: 90px;
+    float: left;
+    cursor: pointer;
+    color: #606266;
+    font-size: 14px;
+    list-style: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+</style>

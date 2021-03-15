@@ -20,103 +20,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c353ec39-f8b8-4079-a088-14b64c6e39ec" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/menu.json.bak" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/roles.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docManagement.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/iconManagement.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/router.json.bak" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/language.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routerbak.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/super_router.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thai.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/zh.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/debug.logs" beforeDir="false" afterPath="$PROJECT_DIR$/logs/debug.logs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/users.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/users.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/menu.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/menu.json.bak" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/roles.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/roles.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/iconManagement.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/iconManagement.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/menuManagement.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/menuManagement.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/roleManagement.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/roleManagement.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/routers.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/routers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/userManagement.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/userManagement.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/router.json" beforeDir="false" afterPath="$PROJECT_DIR$/router.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router.json.bak" beforeDir="false" afterPath="$PROJECT_DIR$/router.json.bak" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api_v1.py" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api_v1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/.eslintignore" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.eslintignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.eslintrc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/js-base64/.attic/test-moment/dankogai.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/js-base64/.attic/test-moment/es5.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/js-base64/.attic/test-moment/es6.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/js-base64/.attic/test-moment/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/js-base64/.attic/test-moment/large.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/js-base64/.attic/test-moment/moment.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/js-base64/.attic/test-moment/yoshinoya.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/js-base64/1x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/js-base64/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/node_modules/js-base64/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/js-base64/base64.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/js-base64/base64.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/node_modules/js-base64/base64.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/js-base64/base64.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/node_modules/js-base64/base64.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/js-base64/bower.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/js-base64/package.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/js-base64/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/node_modules/js-base64/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/js-base64/test/atob.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/js-base64/test/dankogai.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/js-base64/test/es5.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/js-base64/test/es6.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/js-base64/test/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/js-base64/test/large.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/js-base64/test/yoshinoya.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/posthtml-render/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/node_modules/posthtml-render/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/posthtml-render/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/node_modules/posthtml-render/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/posthtml-render/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/node_modules/posthtml-render/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/.bin/json5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/.bin/json5.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/.bin/json5.ps1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/big.js/LICENCE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/big.js/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/big.js/big.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/big.js/big.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/big.js/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/emojis-list/CHANGELOG.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/emojis-list/LICENSE.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/emojis-list/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/emojis-list/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/emojis-list/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/html-webpack-plugin/CHANGELOG.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/html-webpack-plugin/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/html-webpack-plugin/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/html-webpack-plugin/default_index.ejs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/html-webpack-plugin/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/html-webpack-plugin/node_modules/loader-utils/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/html-webpack-plugin/node_modules/loader-utils/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/html-webpack-plugin/node_modules/loader-utils/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/html-webpack-plugin/node_modules/loader-utils/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/html-webpack-plugin/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/json5/CHANGELOG.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/json5/LICENSE.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/json5/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/json5/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/util.promisify/.eslintrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/util.promisify/.npmignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/util.promisify/.travis.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/util.promisify/CHANGELOG.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/util.promisify/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/util.promisify/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/util.promisify/implementation.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/util.promisify/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/util.promisify/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/util.promisify/polyfill.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/node_modules/util.promisify/shim.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/runtime/browser-sprite.build.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/runtime/browser-sprite.build.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/runtime/browser-sprite.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/node_modules/svg-sprite-loader/runtime/browser-sprite.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/zx-layouts/zx-side-bar/components/SideBarItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/node_modules/zx-layouts/zx-side-bar/components/SideBarItem.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/api/colorfulIcon.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/api/colorfulIcon.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/api/icon.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/api/icon.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/api/roleManagement.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/api/roleManagement.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/config/settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/config/settings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/api/menuManagement.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/api/menuManagement.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/api/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/api/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/config/permission.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/config/permission.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/layouts/components/NavBar/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/layouts/components/NavBar/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/store/modules/settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/store/modules/settings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/layouts/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/layouts/components/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/store/modules/permission.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/store/modules/permission.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/store/modules/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/store/modules/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/utils/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/utils/request.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/views/byui/codeGenerator/components/TableEditor.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/byui/codeGenerator/components/TableEditor.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/views/byui/icon/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/byui/icon/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/views/docManagement/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/docManagement/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/views/login/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/login/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/views/personnelManagement/roleManagement/components/RoleManagementEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/personnelManagement/roleManagement/components/RoleManagementEdit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/views/personalCenter/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/personalCenter/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/views/personnelManagement/menuManagement/components/MenuManagementEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/personnelManagement/menuManagement/components/MenuManagementEdit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/views/personnelManagement/menuManagement/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/personnelManagement/menuManagement/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/views/personnelManagement/roleManagement/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/personnelManagement/roleManagement/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/views/personnelManagement/userManagement/components/UserManagementEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/personnelManagement/userManagement/components/UserManagementEdit.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -275,6 +217,8 @@
       <workItem from="1614044348571" duration="19278000" />
       <workItem from="1614078815295" duration="455000" />
       <workItem from="1614130959734" duration="22164000" />
+      <workItem from="1615542536439" duration="3243000" />
+      <workItem from="1615768766251" duration="1573000" />
     </task>
     <servers />
   </component>
@@ -302,10 +246,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="720" y="322" key="#com.intellij.fileTypes.FileTypeChooser/-1024.0.1024.728/0.0.1920.1040@0.0.1920.1040" timestamp="1613702766763" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1612755673636">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="617" y="227" key="FileChooserDialogImpl" timestamp="1615543813354">
+      <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/-1024.0.1024.728/0.0.1920.1040@0.0.1920.1040" timestamp="1612755673636" />
+    <state x="617" y="227" key="FileChooserDialogImpl/0.0.1600.860/-1920.-178.1920.1040@0.0.1600.860" timestamp="1615543813354" />
     <state width="778" height="222" key="GridCell.Tab.0.bottom" timestamp="1614221637991">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

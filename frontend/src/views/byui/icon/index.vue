@@ -2,9 +2,6 @@
   <div class="icon-container">
     <el-row :gutter="15">
       <el-col :span="24">
-        <el-divider content-position="left">点击图标即可复制源码</el-divider>
-      </el-col>
-      <el-col :span="24">
         <el-form :inline="true" label-width="80px" @submit.native.prevent>
           <el-form-item label="图标名称">
             <el-input v-model="queryForm.title"></el-input>
@@ -92,10 +89,10 @@ export default {
     },
     fetchData() {
       getIconList(this.queryForm).then((res) => {
-        const data = res.data;
+        const data = res.data.data;
         this.queryIcon = data;
         this.allIcon = data;
-        this.total = res.totalCount;
+        this.total = res.data.totalCount;
       });
     },
     handleCopyIcon(index, event) {

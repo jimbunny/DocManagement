@@ -19,9 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2de3d110-00b4-4440-ab55-3fe6a6a86f52" name="Default Changelist" comment="bk 2021-02-10">
-      <change beforePath="$PROJECT_DIR$/backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="2de3d110-00b4-4440-ab55-3fe6a6a86f52" name="Default Changelist" comment="bk 2021-02-10" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -95,6 +93,7 @@
       <workItem from="1612504928407" duration="46000" />
       <workItem from="1612755679206" duration="372000" />
       <workItem from="1612952046465" duration="950000" />
+      <workItem from="1614222199121" duration="229000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1612755900876</created>
@@ -110,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612952287060</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add role management">
+      <created>1614222279402</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1614222279402</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,7 +137,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
     <MESSAGE value="bk 2021-02-10" />
-    <option name="LAST_COMMIT_MESSAGE" value="bk 2021-02-10" />
+    <MESSAGE value="add role management" />
+    <option name="LAST_COMMIT_MESSAGE" value="add role management" />
   </component>
   <component name="WindowStateProjectService">
     <state x="335" y="162" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1612496646829">
@@ -178,10 +185,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="382" y="152" key="SettingsEditor/-1024.0.1024.728/0.0.1920.1040@0.0.1920.1040" timestamp="1612496677217" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1612952308148">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="460" y="209" key="Vcs.Push.Dialog.v2" timestamp="1614222291586">
+      <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/-1024.0.1024.728/0.0.1920.1040@0.0.1920.1040" timestamp="1612952308148" />
+    <state x="460" y="209" key="Vcs.Push.Dialog.v2/0.0.1600.860/-1920.-178.1920.1040@0.0.1600.860" timestamp="1614222291586" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/DocManagement$manager.coverage" NAME="manager Coverage Results" MODIFIED="1612504601727" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />

@@ -24,13 +24,33 @@ class RouterResource(Resource):
         获取路由信息
         :return: json
         """
-        self.parser.add_argument("permission", type=str, location="args", help='permission is json')
+        self.parser.add_argument("permission", type=str, default='super', location="args", help='permission is json')
         args = self.parser.parse_args()
-        print(args.permission)
         filePath = os.path.join(os.path.join(os.getcwd(), 'router.json'))
         with open(filePath, 'r', encoding='utf-8') as load_f:
             load_dict = json.load(load_f)
-        result = []
-        for item in load_dict["data"]:
-            pass
-        return pretty_result(code.OK, data=load_dict["data"])
+        filePath2 = os.path.join(os.path.join(os.getcwd(), 'super_router.json'))
+        with open(filePath2, 'r', encoding='utf-8') as load_f2:
+            load_dict2 = json.load(load_f2)
+        if args.permission == "super":
+            return pretty_result(code.OK, data=load_dict2["data"] + load_dict["data"])
+        else:
+            return pretty_result(code.OK, data=load_dict["data"])
+
+    @login_required
+    def put(self):
+        """
+        更新路由信息
+        :return: json
+        """
+        self.parser.add_argument("router", required=True, type=list, location="json", help='router is list')
+        args = self.parser.parse_args()
+        data = {
+          "code": 200,
+          "msg": "success",
+          "data": args.router
+        }
+        filePath = os.path.join(os.path.join(os.getcwd(), 'router.json'))
+        with open(filePath, 'w', encoding='utf-8') as file:
+            file.write(json.dumps(data))
+        return pretty_result(code.OK, data=args.router)

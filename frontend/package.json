@@ -76,7 +76,7 @@
         "zx-player": "^0.9.6",
         "zx-templates": "^0.0.5",
         "zx-verify": "^0.0.1",
-        "vue-i18n": "^8.8.2",
+        "vue-i18n": "7.3.2",
         "svg-sprite-loader": "^5.2.1"
     },
     "devDependencies": {

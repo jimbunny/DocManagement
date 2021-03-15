@@ -1,0 +1,146 @@
+{
+  "code": 200,
+  "msg": "success",
+  "data": [
+    {
+      "path": "/",
+      "component": "Layout",
+      "redirect": "/index",
+      "children": [
+        {
+          "path": "/index",
+          "name": "Index",
+          "component": "personalCenter/index",
+          "meta": {
+            "title": "personalCenter",
+            "icon": "home",
+            "affix": true,
+            "noKeepAlive": true
+          }
+        }
+      ]
+    },
+    {
+      "path": "/doc",
+      "component": "Layout",
+      "redirect": "/docManagement",
+      "children": [
+        {
+          "path": "/docManagement",
+          "name": "DocManagement",
+          "component": "docManagement/index",
+          "meta": {
+            "title": "docManagement",
+            "icon": "marker",
+            "permissions": ["superAdmin", "admin", "test"]
+          }
+        }
+      ]
+    },
+    {
+      "path": "/personnelManagement",
+      "component": "Layout",
+      "redirect": "noRedirect",
+      "name": "PersonnelManagement",
+      "meta": { "title": "configManagement", "icon": "users-cog","permissions": ["superAdmin","admin"] },
+      "children": [
+        {
+          "path": "/userManagement",
+          "name": "UserManagement",
+          "component": "personnelManagement/userManagement/index",
+          "meta": { "title": "userManagement", "permissions": ["superAdmin"] }
+        },
+         {
+          "path": "/roleManagement",
+          "name": "RoleManagement",
+          "component": "personnelManagement/roleManagement/index",
+          "meta": { "title": "roleManagement", "permissions": ["superAdmin"] }
+        },
+         {
+          "path": "/menuManagement",
+          "name": "MenuManagement",
+          "component": "personnelManagement/menuManagement/index",
+          "meta": { "title": "menuManagement", "permissions": ["superAdmin"] }
+        },
+         {
+          "path": "/permission",
+          "name": "PermissionTest",
+          "component": "personnelManagement/permissionTest/index",
+          "meta": { "title": "permissionTest", "permissions": ["superAdmin"] }
+        },
+        {
+          "path": "awesomeIcon",
+          "name": "AwesomeIcon",
+          "component": "byui/icon/index",
+          "meta": { "title": "icon" }
+        }
+      ]
+    },
+    {
+      "path": "/menu",
+      "component": "Layout",
+      "redirect": "noRedirect",
+      "children": [
+        {
+          "path": "showDoc",
+          "name": "ShowDoc",
+          "component": "showDoc/index",
+          "meta": {
+            "title": "testPage",
+            "permissions": ["superAdmin", "admin"],
+            "icon": "cloud"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/byui",
+      "component": "Layout",
+      "redirect": "noRedirect",
+      "name": "Byui",
+      "meta": { "title": "组件", "icon": "cloud" },
+      "children": [
+        {
+          "path": "menu1",
+          "component": "byui/nested/menu1/index",
+          "name": "Menu1",
+          "alwaysShow": true,
+          "meta": {
+              "title": "嵌套路由 1",
+              "permissions": ["superAdmin"]
+          },
+          "children": [{
+              "path": "menu1-1",
+              "name": "Menu1-1",
+              "alwaysShow": true,
+              "meta": { "title": "嵌套路由 1-1" },
+              "component": "byui/nested/menu1/menu1-1/index",
+              "children": [{
+                  "path": "menu1-1-1",
+                  "name": "Menu1-1-1",
+                  "meta": { "title": "嵌套路由 1-1-1" },
+                  "component": "byui/nested/menu1/menu1-1/menu1-1-1/index"
+              } ]
+          } ]
+        }
+      ]
+    },
+    {
+      "path": "/menu2",
+      "component": "Layout",
+      "redirect": "noRedirect",
+      "children": [
+        {
+          "path": "/showDoc2",
+          "name": "/ShowDoc2",
+          "component": "showDoc/index",
+          "meta": {
+            "title": "testPage2",
+            "permissions": ["superAdmin", "admin"],
+            "icon": "cloud"
+          }
+        }
+      ]
+    }
+  ]
+}

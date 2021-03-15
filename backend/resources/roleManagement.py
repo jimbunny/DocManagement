@@ -124,3 +124,24 @@ class RoleManagementResource(Resource):
         args = self.parser.parse_args()
         RolesModel.delete(RolesModel, args.ids)
         return pretty_result(code.OK, msg='权限信息删除成功！')
+
+
+class PermissionResource(Resource):
+    """
+    permissions management资源类
+    """
+
+    def __init__(self):
+        self.parser = RequestParser()
+
+    @login_required
+    def get(self):
+        """
+        获取权限列表信息
+        :return: json
+        """
+        self.parser.add_argument("permission", type=str, required=True, location="args", help='permission is required')
+        args = self.parser.parse_args()
+        postion_list = RolesModel.filter_by_permission(RolesModel, args.permission)
+        return pretty_result(code.OK, data=postion_list, msg='权限信息获取成功！')
+

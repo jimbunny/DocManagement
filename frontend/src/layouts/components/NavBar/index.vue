@@ -5,7 +5,7 @@
         <div class="left-panel">
           <i
             :class="collapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'"
-            :title="collapse ? '展开' : '收起'"
+            :title="collapse ? $t('header.openup') : $t('header.packup')"
             class="fold-unfold"
             @click="handleCollapse"
           ></i>

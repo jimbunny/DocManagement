@@ -16,9 +16,9 @@ export function doAdd(data) {
     });
 }
 
-export function doEdit(data) {
+export function doPermissionEdit(data) {
     return request({
-        url: "/menuManagement/doEdit",
+        url: "/menuManagement/doPermissionEdit",
         method: "put",
         data,
     });
@@ -29,5 +29,13 @@ export function doDelete(data) {
         url: "/menuManagement/doDelete",
         method: "delete",
         data,
+    });
+}
+
+export function getCheckedMenu(data) {
+    return request({
+        url: "/menuManagement/getCheckedMenu",
+        method: "get",
+        params: data,
     });
 }

@@ -37,6 +37,9 @@ class RolesModel(db.Model, BaseModel):
     def filter_by_postion(self, postion):
         return self.query.filter(self.postion.like("%" + postion + "%")).all()
 
+    def filter_by_permission(self, permission):
+        return self.query.filter(self.permission.like("%" + permission + "%")).all()
+
     def get(self, _id):
         return self.query.filter_by(id=_id).first()
 

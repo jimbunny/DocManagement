@@ -41,7 +41,7 @@
         >
         <el-radio v-model="form.permission" label="admin">管理员</el-radio>
         <!-- <el-radio v-model="form.permission" label="guest">游客</el-radio> -->
-        <el-radio v-model="form.permission" label="user">普通用户</el-radio>
+        <el-radio v-model="form.permission" label="test">普通用户</el-radio>
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
@@ -98,7 +98,7 @@ export default {
         username: "",
         password: "12345678",
         email: "",
-        permission: "user",
+        permission: "test",
       },
       addRules: {
         username: [

@@ -3,7 +3,7 @@
     <div slot="header" class="clearfix" style="margin-bottom: 15px;">
       <el-button type="primary" @click="prettierJSON">生成表格</el-button>
     </div>
-    <json-editor v-model="value" @change="prettierNewJSON" />
+    <json-editor v-model="value" :show-btns="true" @json-save="prettierNewJSON" />
   </div>
 </template>
 

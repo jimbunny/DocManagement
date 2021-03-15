@@ -17,7 +17,7 @@
             class="filter-tree"
             :data="data"
             :props="defaultProps"
-            node-key="value"
+            node-key="path"
             default-expand-all
             :expand-on-click-node="false"
             :filter-node-method="filterNode"
@@ -25,29 +25,25 @@
           >
             // eslint-disable-next-line vue/no-template-shadow
             <span slot-scope="{ node, data }" class="custom-tree-node">
-              <span>{{ node.label }}</span>
-              <span>
-                <el-button type="text" size="mini" @click="() => append(data)">
-                  Append
-                </el-button>
-                <el-button
-                  type="text"
-                  size="mini"
-                  @click="() => remove(node, data)"
-                >
-                  Delete
-                </el-button>
-              </span>
+              <!-- <span>{{ generateTitle(data.label) }}</span> -->
+              <span v-if="!data.meta">{{ data.path }}</span>
+              <span v-else>{{ generateTitle(data.meta.title) }}</span>
             </span>
           </el-tree>
         </div>
       </el-col>
       <el-col :xs="16" :sm="16" :md="16" :lg="20" :xl="20">
-        <el-form ref="form" :model="form" :rules="rules" label-width="80px">
+        <el-form
+          v-if="status"
+          ref="form"
+          :model="form"
+          :rules="rules"
+          label-width="80px"
+        >
           <el-form-item label="标题" prop="title">
             <el-input v-model="form.title" maxlength="20"></el-input>
           </el-form-item>
-          <el-form-item label="菜单" prop="menu">
+          <!--<el-form-item label="菜单" prop="menu">
             <el-cascader
               v-model="form.menu"
               :options="data"
@@ -55,7 +51,7 @@
               @change="handleChange"
             >
             </el-cascader>
-          </el-form-item>
+          </el-form-item> -->
           <el-form-item label="语言" prop="language">
             <el-select v-model="form.language">
               <el-option label="中文" value="zh"></el-option>
@@ -66,7 +62,7 @@
             <quill-editor
               v-model="form.content"
               :style="{
-                height: '400px',
+                height: '600px',
                 border: '1px solid ' + borderColor,
               }"
               :options="editorOption"
@@ -84,7 +80,7 @@
     <el-dialog title="预览效果" :visible.sync="dialogTableVisible">
       <div style="min-height: 60vh;">
         <h1 class="news-title">{{ form.title }}</h1>
-        <div class="news-content" v-html="form.content"></div>
+        <div class="news-content ql-editor" v-html="form.content"></div>
       </div>
     </el-dialog>
   </div>
@@ -98,6 +94,8 @@ import "quill/dist/quill.bubble.css";
 import { getTree } from "@/api/menuManagement";
 import { getFile, doAdd as addFile } from "@/api/docManagement";
 import { okCode, errorCode } from "@/config/settings";
+import { generateTitle } from "@/utils/i18n";
+import { getRouterList as getList } from "@/api/router";
 
 export default {
   name: "Editor",
@@ -107,13 +105,15 @@ export default {
       data: [],
       defaultProps: {
         children: "children",
-        label: "value",
+        label: "path",
       },
       list: [],
       listLoading: true,
       elementLoadingText: "正在加载...",
       borderColor: "#dcdfe6",
       dialogTableVisible: false,
+      path: "",
+      status: false,
       form: {
         title: "",
         menu: [],
@@ -124,6 +124,9 @@ export default {
       editorOption: {
         placeholder: "",
         modules: {
+          // clipboard: {
+          //   matchers: [["img", this.handleCustomMatcher]],
+          // },
           toolbar: [
             [{ header: [1, 2, 3, 4, 5, 6, false] }],
             [{ size: ["small", false, "large", "huge"] }],
@@ -176,13 +179,46 @@ export default {
     filterText(val) {
       this.$refs.tree.filter(val);
     },
+    "form.language"(language) {
+      getFile({ language: language, menu: this.path.replace("/", "") }).then(
+        (res) => {
+          const { code, msg, data } = res;
+          if (code === okCode) {
+            this.form = data;
+            // this.$baseMessage("get doc successful!", "success");
+          } else {
+            this.$baseMessage(msg || `get doc failed！`, "error");
+          }
+        }
+      );
+      // console.log(this.checkName(this.data, val, false));
+    },
   },
   async created() {
-    const roleData = await getTree();
-    this.data = roleData.data;
+    const res = await getList({ permission: "admin" });
+    const { code, msg, data } = res;
+    if (code === okCode) {
+      this.data = data;
+    } else {
+      this.$baseMessage(msg || `获取菜单信息失败！`, "error");
+    }
+    // const roleData = await getTree();
+    // this.data = roleData.data;
     // this.fetchData();
   },
   methods: {
+    handleCustomMatcher(node,Delta) {
+      // let ops = []
+      // Delta.ops.forEach(op => {
+      //   if (op.insert && typeof op.alt === 'string') {
+      //     ops.push({insert:op.insert})
+      //   }
+      // })
+      // Delta.ops = ops
+      // console.log(Delta.ops)
+      return Delta
+    },
+    generateTitle,
     async fetchData() {
       this.listLoading = true;
       const { data } = await getTree();
@@ -192,12 +228,18 @@ export default {
       }, 300);
     },
     handleNodeClick(data) {
+      if (!data.alwaysShow) {
+        this.status = true;
+      } else {
+        this.status = false;
+      }
       const language = "zh";
-      getFile({ language: language, menu: data.value }).then((res) => {
+      this.path = data.path.replace("/", "");
+      getFile({ language: language, menu: this.path }).then((res) => {
         const { code, msg, data } = res;
         if (code === okCode) {
           this.form = data;
-          this.$baseMessage("get doc successful!", "success");
+          // this.$baseMessage("get doc successful!", "success");
         } else {
           this.$baseMessage(msg || `get doc failed！`, "error");
         }
@@ -273,8 +315,14 @@ export default {
     },
 
     filterNode(value, data) {
+      // if (!value) return true;
+      // return data.label.indexOf(value) !== -1;
       if (!value) return true;
-      return data.label.indexOf(value) !== -1;
+      if (data.meta) {
+        return this.generateTitle(data.meta.title).indexOf(value) !== -1;
+      } else {
+        return true;
+      }
     },
   },
 };
