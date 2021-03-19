@@ -4,12 +4,12 @@
       <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
-            <span>中文</span>
+            <span>Chinese</span>
             <el-button
               style="float: right; padding: 3px 0;"
               type="text"
               @click="handleChangeLanguage('zh')"
-              >更新</el-button
+              >Update</el-button
             >
           </div>
           <div class="text item">
@@ -20,12 +20,12 @@
       <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
-            <span>泰语</span>
+            <span>Thai</span>
             <el-button
               style="float: right; padding: 3px 0;"
               type="text"
               @click="handleChangeLanguage('thai')"
-              >更新</el-button
+              >Update</el-button
             >
           </div>
           <div class="text item">
@@ -91,7 +91,9 @@ export default {
         }).then((res) => {
           if (res.code == okCode) {
             this.thai = res.data;
+            this.$baseMessage("update Thai successful!", "success");
           } else {
+            this.$baseMessage("update Thai failed!", "error");
             console.log(res.message);
           }
         });
@@ -103,7 +105,9 @@ export default {
         }).then((res) => {
           if (res.code == okCode) {
             this.zh = res.data;
+            this.$baseMessage("update Chinese successful!", "success");
           } else {
+            this.$baseMessage("update Chinese successful!", "error");
             console.log(res.message);
           }
         });

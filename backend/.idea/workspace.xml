@@ -20,43 +20,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c353ec39-f8b8-4079-a088-14b64c6e39ec" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/language.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routerbak.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/super_router.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/thai.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/zh.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/debug.logs" beforeDir="false" afterPath="$PROJECT_DIR$/logs/debug.logs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/menu.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/menu.json.bak" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/alembic.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/env.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/script.py.mako" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/23e2570c8e75_.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/971eccf694df_.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/a262670ac9fe_1_0.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/models/roles.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/roles.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/iconManagement.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/iconManagement.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/menuManagement.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/menuManagement.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/login.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/roleManagement.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/roleManagement.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/routers.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/routers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/userManagement.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/userManagement.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/router.json" beforeDir="false" afterPath="$PROJECT_DIR$/router.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router.json.bak" beforeDir="false" afterPath="$PROJECT_DIR$/router.json.bak" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api_v1.py" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api_v1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/zx-layouts/zx-side-bar/components/SideBarItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/node_modules/zx-layouts/zx-side-bar/components/SideBarItem.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/api/colorfulIcon.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/api/colorfulIcon.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/api/icon.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/api/icon.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/api/menuManagement.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/api/menuManagement.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/api/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/api/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/config/permission.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/config/permission.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/layouts/components/NavBar/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/layouts/components/NavBar/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/layouts/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/layouts/components/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/store/modules/permission.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/store/modules/permission.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/store/modules/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/store/modules/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/utils/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/utils/request.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/views/byui/codeGenerator/components/TableEditor.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/byui/codeGenerator/components/TableEditor.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/views/byui/icon/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/byui/icon/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/views/docManagement/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/docManagement/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/views/personalCenter/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/personalCenter/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/super_router.json" beforeDir="false" afterPath="$PROJECT_DIR$/super_router.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.json" beforeDir="false" afterPath="$PROJECT_DIR$/test.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test2.py" beforeDir="false" afterPath="$PROJECT_DIR$/test2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/thai.json" beforeDir="false" afterPath="$PROJECT_DIR$/thai.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zh.json" beforeDir="false" afterPath="$PROJECT_DIR$/zh.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/api/roleManagement.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/api/roleManagement.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/views/personnelManagement/menuManagement/components/MenuManagementEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/personnelManagement/menuManagement/components/MenuManagementEdit.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/views/personnelManagement/menuManagement/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/personnelManagement/menuManagement/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/views/personnelManagement/roleManagement/components/RoleManagementEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/personnelManagement/roleManagement/components/RoleManagementEdit.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/views/personnelManagement/roleManagement/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/personnelManagement/roleManagement/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/views/personnelManagement/userManagement/components/UserManagementEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/personnelManagement/userManagement/components/UserManagementEdit.vue" afterDir="false" />
     </list>
@@ -218,7 +206,8 @@
       <workItem from="1614078815295" duration="455000" />
       <workItem from="1614130959734" duration="22164000" />
       <workItem from="1615542536439" duration="3243000" />
-      <workItem from="1615768766251" duration="1573000" />
+      <workItem from="1615768766251" duration="17217000" />
+      <workItem from="1615945412554" duration="11845000" />
     </task>
     <servers />
   </component>
@@ -279,6 +268,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/-1024.0.1024.728/0.0.1920.1040@0.0.1920.1040" timestamp="1612505203314" />
+    <state x="92" y="92" width="1416" height="676" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1615888431415">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="92" y="92" width="1416" height="676" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1600.860/-1920.-178.1920.1040@0.0.1600.860" timestamp="1615888431415" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/backend$test22.coverage" NAME="test22 Coverage Results" MODIFIED="1614163069581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

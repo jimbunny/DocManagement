@@ -8,24 +8,31 @@
       <span class="hidden-md-and-down user-name">{{ userName }}</span>
       <i class="hidden-md-and-down el-icon-arrow-down el-icon--right"></i>
     </span>
-
     <el-dropdown-menu slot="dropdown">
-      <el-dropdown-item>
+      <el-dropdown-item command="gotolink">
         <byui-icon :icon="['fas', 'user']"></byui-icon>
-        个人中心
+        <router-link :to="{ path: '/index' }">{{
+          $t("route.personalCenter")
+        }}</router-link>
       </el-dropdown-item>
       <el-dropdown-item command="logout" divided>
         <byui-icon :icon="['fas', 'sign-out-alt']"></byui-icon>
-        退出登录
+        {{ $t("header.logout") }}
       </el-dropdown-item>
     </el-dropdown-menu>
   </el-dropdown>
+  
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 export default {
   name: "Avatar",
+  data() {
+    return {
+      dialogVisible: false,
+    };
+  },
   computed: {
     ...mapGetters({
       avatar: "user/avatar",
@@ -40,13 +47,27 @@ export default {
           break;
       }
     },
+    gotolink(){
+      //点击跳转至上次页面
+      //this.$router.go(-1)
+      //指定跳转地址
+      this.$router.push("/index");
+    },
     logout() {
-      this.$baseConfirm("您确定要退出" + this.$baseTitle + "吗?", null, () => {
-        const fullPath = this.$route.fullPath;
-        this.$store.dispatch("user/logout").then(() => {
-          this.$router.push(`/login?redirect=${fullPath}`);
-        });
-      });
+      this.$baseConfirm(
+        this.$t("header.logoutMessage") +
+          this.$baseTitle +
+          this.$t("header.logoutTip"),
+        this.$t("header.tips"),
+        this.$t("header.confirm"),
+        this.$t("header.cancel"),
+        () => {
+          const fullPath = this.$route.fullPath;
+          this.$store.dispatch("user/logout").then(() => {
+            this.$router.push(`/login?redirect=${fullPath}`);
+          });
+        }
+      );
     },
   },
 };

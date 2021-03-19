@@ -1,4 +1,5 @@
 import Vue from "vue";
+import i18n from '@/lang';
 import { getInfo, login, logout } from "@/api/user";
 import {
     getAccessToken,
@@ -22,6 +23,7 @@ const state = {
     // expiresTime: "",
     userName: "",
     avatar: "",
+    email: "",
     permissions: [],
 };
 const getters = {
@@ -31,6 +33,7 @@ const getters = {
     permissions: (state) => state.permissions,
     refreshToken: (state) => state.refreshToken,
     expiresTime: (state) => state.expiresTime,
+    email: (state) => state.email,
 };
 const mutations = {
     setAccessToken(state, accessToken) {
@@ -38,6 +41,9 @@ const mutations = {
     },
     setUserName(state, userName) {
         state.userName = userName;
+    },
+    setEmail(state, email) {
+        state.email = email;
     },
     setRefreshToken(state, refreshToken) {
         // 保存延续token
@@ -69,15 +75,15 @@ const actions = {
             const hour = new Date().getHours();
             const thisTime =
                 hour < 8 ?
-                "早上好" :
+                i18n.t("login.morning") :
                 hour <= 11 ?
-                "上午好" :
+                i18n.t("login.shangwu") :
                 hour <= 13 ?
-                "中午好" :
+                i18n.t("login.noon") :
                 hour < 18 ?
-                "下午好" :
-                "晚上好";
-            Vue.prototype.$baseNotify(`欢迎登录${title}`, `${thisTime}！`);
+                i18n.t("login.afternoon") :
+                i18n.t("login.evening");
+            Vue.prototype.$baseNotify(i18n.t("login.welcome") + `${title}`, `${thisTime}！`);
         } else {
             Vue.prototype.$baseMessage(
                 // `登录接口异常，未正确返回${tokenName}...`,
@@ -90,17 +96,18 @@ const actions = {
         // const { data } = await getInfo(state.accessToken);
         const { data } = await getInfo();
         if (!data) {
-            Vue.prototype.$baseMessage("验证失败，请重新登录...", "error");
+            Vue.prototype.$baseMessage(i18n.t("login.relogin"), "error");
             return false;
         }
-        let { permission, username, avatar } = data;
-        if (permission && username && avatar) {
+        let { permission, username, avatar, email } = data;
+        if (permission && username && avatar && email) {
             commit("setPermissions", [permission]);
             commit("setUserName", username);
+            commit("setEmail", email);
             commit("setAvatar", avatar);
             return [permission];
         } else {
-            Vue.prototype.$baseMessage("获取用户信息接口异常", "error");
+            Vue.prototype.$baseMessage(i18n.t("login.userFailedMsg"), "error");
             return false;
         }
     },

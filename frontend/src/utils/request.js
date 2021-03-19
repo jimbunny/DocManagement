@@ -108,7 +108,7 @@ service.interceptors.response.use(
         if (code !== okCode && code !== errorCode) {
             switch (code) {
                 case invalidCode:
-                    errorMsg(msg || `后端接口${code}异常`);
+                    errorMsg(msg || `backend API${code}error`);
                     store.dispatch("user/resetAccessToken");
                     store.dispatch("user/resetRefreshToken");
                     break;
@@ -136,7 +136,7 @@ service.interceptors.response.use(
                             })
                             .catch((res) => {
                                 Message({
-                                    message: `Token过期，请重新登陆！`,
+                                    message: `Token Expired，Please login again！`,
                                     type: "error",
                                     duration: 10000,
                                 });
@@ -163,11 +163,11 @@ service.interceptors.response.use(
                     }
                     break;
                 default:
-                    errorMsg(msg || `后端接口${code}异常`);
+                    errorMsg(msg || `backend API${code}error`);
                     break;
             }
             return Promise.reject(
-                "vue-flask-mysql-demo请求异常拦截:" +
+                "Request exception interception:" +
                 JSON.stringify({ url: config.url, code, msg }) || "Error"
             );
         } else {
@@ -182,16 +182,16 @@ service.interceptors.response.use(
         let { message } = error;
         switch (message) {
             case "Network Error":
-                message = "后端接口连接异常";
+                message = "backend API connection error";
                 break;
             case "timeout":
-                message = "后端接口请求超时";
+                message = "backend API timeout";
                 break;
             case "Request failed with status code":
-                message = "后端接口" + message.substr(message.length - 3) + "异常";
+                message = "backend API" + message.substr(message.length - 3) + "error";
                 break;
         }
-        errorMsg(message || "后端接口未知异常");
+        errorMsg(message || "backend API unknown Error");
         return Promise.reject(error);
     }
 );

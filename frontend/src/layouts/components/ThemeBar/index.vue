@@ -1,14 +1,14 @@
 <template>
   <span v-if="themeBar">
     <byui-icon
-      title="主题配置"
+      :title="$t('header.theme')"
       :icon="['fas', 'palette']"
       @click="handleChangeTheme"
     />
     <div class="theme-bar-setting">
       <div @click="handleChangeTheme">
         <byui-icon :icon="['fas', 'palette']" />
-        <p>主题配置</p>
+        <p>{{ $t("header.theme") }}</p>
       </div>
       <!--<div @click="handleGetCode">
         <byui-icon :icon="['fas', 'laptop-code']"></byui-icon>
@@ -21,7 +21,7 @@
     </div>
 
     <el-drawer
-      title="主题配置"
+      :title="$t('theme.settingTheme')"
       :visible.sync="drawerVisible"
       direction="rtl"
       append-to-body
@@ -30,25 +30,37 @@
       <el-scrollbar style="height: 94vh; overflow: hidden;">
         <div class="el-drawer__body">
           <el-form ref="form" :model="theme">
-            <el-form-item label="布局">
+            <el-form-item :label="$t('theme.layout')">
               <el-radio-group v-model="theme.layout">
-                <el-radio-button label="vertical">纵向布局</el-radio-button>
-                <el-radio-button label="horizontal">横向布局</el-radio-button>
+                <el-radio-button label="vertical">{{
+                  $t("theme.verticalLayout")
+                }}</el-radio-button>
+                <el-radio-button label="horizontal">{{
+                  $t("theme.horizontalLayout")
+                }}</el-radio-button>
               </el-radio-group>
             </el-form-item>
-            <el-form-item label="头部">
+            <el-form-item :label="$t('theme.header')">
               <el-radio-group v-model="theme.header">
-                <el-radio-button label="fixed">固定头部</el-radio-button>
-                <el-radio-button label="noFixed">不固定头部</el-radio-button>
+                <el-radio-button label="fixed">{{
+                  $t("theme.fixedHeader")
+                }}</el-radio-button>
+                <el-radio-button label="noFixed">{{
+                  $t("theme.noFixedHeader")
+                }}</el-radio-button>
               </el-radio-group>
             </el-form-item>
-            <el-form-item label="多标签">
+            <el-form-item :label="$t('theme.tags')">
               <el-radio-group v-model="theme.tagsBar">
-                <el-radio-button label="true">开启</el-radio-button>
-                <el-radio-button label="false">不开启</el-radio-button>
+                <el-radio-button label="true">{{
+                  $t("theme.turnOn")
+                }}</el-radio-button>
+                <el-radio-button label="false">{{
+                  $t("theme.turnOff")
+                }}</el-radio-button>
               </el-radio-group>
             </el-form-item>
-            <el-form-item label="菜单背景色">
+            <el-form-item :label="$t('theme.menuBackgroundColor')">
               <el-color-picker
                 v-model="theme.menuBackground"
                 :predefine="[
@@ -63,7 +75,7 @@
                 show-alpha
               ></el-color-picker>
             </el-form-item>
-            <el-form-item label="菜单子级背景色">
+            <el-form-item :label="$t('theme.inerMenuBackgroundColor')">
               <el-color-picker
                 v-model="theme.menuChildrenBackground"
                 :predefine="[
@@ -78,35 +90,35 @@
                 show-alpha
               ></el-color-picker>
             </el-form-item>
-            <el-form-item label="菜单选中色">
+            <el-form-item :label="$t('theme.checkedMenuColor')">
               <el-color-picker
                 v-model="theme.menuBackgroundActive"
                 :predefine="['#22468a', '#1890ff', '#21e6af', '#f57e6c']"
                 show-alpha
               ></el-color-picker>
             </el-form-item>
-            <el-form-item label="菜单文字色">
+            <el-form-item :label="$t('theme.menuTextColor')">
               <el-color-picker
                 v-model="theme.menuColor"
                 :predefine="['#000', '#fff']"
                 show-alpha
               ></el-color-picker>
             </el-form-item>
-            <el-form-item label="标签主题色">
+            <el-form-item :label="$t('theme.tagsThemeColor')">
               <el-color-picker
                 v-model="theme.tagsBarBackgroundActive"
                 :predefine="['#1890ff', '#0fd59d', '#f56c6c']"
                 show-alpha
               ></el-color-picker>
             </el-form-item>
-            <el-form-item label="默认按钮主题色">
+            <el-form-item :label="$t('theme.defaultButtonThemeColor')">
               <el-color-picker
                 v-model="theme.buttonBackground"
                 :predefine="['#1890ff', '#0fd59d', '#f56c6c']"
                 show-alpha
               ></el-color-picker>
             </el-form-item>
-            <el-form-item label="分页选中色">
+            <el-form-item :label="$t('theme.checkedPaginationColor')">
               <el-color-picker
                 v-model="theme.paginationBackgroundActive"
                 :predefine="['#1890ff', '#0fd59d', '#f56c6c']"
@@ -114,10 +126,12 @@
               ></el-color-picker>
             </el-form-item>
             <el-form-item>
-              <el-button @click="handleSetDfaultTheme">恢复默认</el-button>
-              <el-button type="primary" @click="handleSaveTheme"
-                >保存</el-button
-              >
+              <el-button @click="handleSetDfaultTheme">{{
+                $t("theme.setDefaultTheme")
+              }}</el-button>
+              <el-button type="primary" @click="handleSaveTheme">{{
+                $t("theme.save")
+              }}</el-button>
             </el-form-item>
           </el-form>
         </div></el-scrollbar

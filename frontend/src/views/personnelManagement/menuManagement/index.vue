@@ -2,7 +2,7 @@
   <div class="menuManagement-container">
     <el-row>
       <el-col :xs="24" :sm="24" :md="8" :lg="6" :xl="6">
-        <el-input v-model="filterText" placeholder="输入关键字进行过滤">
+        <el-input v-model="filterText" :placeholder="$t('menu.filterText')">
         </el-input>
         <div class="block">
           <el-tree
@@ -29,14 +29,14 @@
                     size="mini"
                     @click="() => append(data)"
                   >
-                    Append
+                    {{ $t("menu.add") }}
                   </el-button>
                   <el-button
                     type="text"
                     size="mini"
                     @click="() => remove(node, data)"
                   >
-                    Delete
+                    {{ $t("menu.delete") }}
                   </el-button>
                 </span>
               </template>
@@ -48,7 +48,7 @@
         <byui-query-form>
           <byui-query-form-left-panel :span="12">
             <el-button icon="el-icon-plus" type="primary" @click="handleEdit">
-              添加
+              {{ $t("menu.add") }}
             </el-button>
           </byui-query-form-left-panel>
         </byui-query-form>
@@ -57,10 +57,10 @@
           :model="menu"
           status-icon
           :rules="rules"
-          label-width="100px"
+          label-width="140px"
           class="demo-ruleForm"
         >
-          <el-form-item label="alwaysShow" prop="alwaysShow">
+          <el-form-item :label="$t('menu.alwaysShow')" prop="alwaysShow">
             <el-switch
               v-model="menu.alwaysShow"
               active-color="#13ce66"
@@ -69,32 +69,35 @@
             >
             </el-switch>
           </el-form-item>
-          <el-form-item label="name" prop="name">
+          <el-form-item :label="$t('menu.name')" prop="name">
             <el-input
               v-model="menu.name"
               autocomplete="off"
               disabled
             ></el-input>
           </el-form-item>
-          <el-form-item label="path" prop="path">
+          <el-form-item :label="$t('menu.path')" prop="path">
             <el-input v-model="menu.path" disabled></el-input>
           </el-form-item>
-          <el-form-item label="中文" prop="zh">
-            <el-input v-model="menu.zh" placeholder="请输入中文标题"></el-input>
-          </el-form-item>
-          <el-form-item label="泰文" prop="thai">
+          <el-form-item :label="$t('menu.zh')" prop="zh">
             <el-input
-              v-model="menu.thai"
-              placeholder="请输入泰语标题"
+              v-model="menu.zh"
+              :placeholder="$t('menu.zhTip')"
             ></el-input>
           </el-form-item>
-          <el-form-item label="icon" prop="icon">
+          <el-form-item :label="$t('menu.thai')" prop="thai">
+            <el-input
+              v-model="menu.thai"
+              :placeholder="$t('menu.thaiTip')"
+            ></el-input>
+          </el-form-item>
+          <el-form-item :label="$t('menu.icon')" prop="icon">
             <!-- <el-input v-model="menu.checkPass" type="password" autocomplete="off"></el-input> -->
             <el-autocomplete
               v-model="menu.icon"
               popper-class="my-autocomplete"
               :fetch-suggestions="querySearch"
-              placeholder="请选择图标"
+              :placeholder="$t('menu.iconTip')"
               style="width: 100%;"
               @select="handleSelect"
             >
@@ -115,7 +118,7 @@
               </template>
             </el-autocomplete>
           </el-form-item>
-          <el-form-item label="permissions" prop="permissions">
+          <el-form-item :label="$t('menu.permission')" prop="permissions">
             <el-tree
               ref="permissionTree"
               :props="props"
@@ -131,10 +134,12 @@
             </el-tree>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="submitForm('ruleForm')"
-              >更新</el-button
-            >
-            <el-button @click="resetForm('ruleForm')">重置</el-button>
+            <el-button type="primary" @click="submitForm('ruleForm')">{{
+              $t("menu.update")
+            }}</el-button>
+            <el-button @click="resetForm('ruleForm')">{{
+              $t("menu.reset")
+            }}</el-button>
           </el-form-item>
         </el-form>
       </el-col>
@@ -164,6 +169,34 @@ export default {
   name: "MenuManagement",
   components: { Edit },
   data() {
+    var validateName = (rule, value, callback) => {
+      if (!value) {
+        return callback(new Error(this.$t("menu.nameTip")));
+      } else {
+        callback();
+      }
+    };
+    var validatePath = (rule, value, callback) => {
+      if (!value) {
+        return callback(new Error(this.$t("menu.pathTip")));
+      } else {
+        callback();
+      }
+    };
+    var validateThai = (rule, value, callback) => {
+      if (!value) {
+        return callback(new Error(this.$t("menu.thaiTip")));
+      } else {
+        callback();
+      }
+    };
+    var validateZh = (rule, value, callback) => {
+      if (!value) {
+        return callback(new Error(this.$t("menu.zhTip")));
+      } else {
+        callback();
+      }
+    };
     return {
       data: [],
       filterText: "",
@@ -176,7 +209,7 @@ export default {
         children: "children",
       },
       listLoading: true,
-      elementLoadingText: "正在加载...",
+      elementLoadingText: this.$t("menu.loading"),
       menu: {
         name: "",
         path: "",
@@ -188,14 +221,14 @@ export default {
       },
       rules: {
         // type: [{ required: true, trigger: "blur", message: "请选择类型" }],
-        name: [{ required: true, trigger: "blur", message: "请输入名称" }],
-        path: [{ required: true, trigger: "blur", message: "请输入路径" }],
-        thai: [{ required: true, trigger: "blur", message: "请输入泰文标题" }],
-        zh: [{ required: true, trigger: "blur", message: "请输入中文标题" }],
+        name: [{ required: true, trigger: "blur", validator: validateName }],
+        path: [{ required: true, trigger: "blur", validator: validatePath }],
+        thai: [{ required: true, trigger: "blur", validator: validateThai }],
+        zh: [{ required: true, trigger: "blur", validator: validateZh }],
         // icon: [{ required: true, trigger: "blur", message: "请选择图标" }],
-        permissions: [
-          { required: true, trigger: "blur", message: "请选择角色" },
-        ],
+        // permissions: [
+        //   { required: true, trigger: "blur", message: "请选择角色" },
+        // ],
       },
       permissions: [],
       queryIcon: [],
@@ -218,7 +251,7 @@ export default {
     if (code === okCode) {
       this.data = data;
     } else {
-      this.$baseMessage(msg || `获取菜单信息失败！`, "error");
+      this.$baseMessage(this.$t("menu.getMenuFailed"), "error");
     }
     //获取权限信息
     this.getPermissionData();
@@ -264,7 +297,7 @@ export default {
             if (res.code === okCode) {
               this.data = res.data;
             } else {
-              this.$baseMessage(`更新菜单信息失败！`, "error");
+              this.$baseMessage(this.$t("menu.editMenuFailed"), "error");
             }
           });
           updateTitle({
@@ -275,7 +308,10 @@ export default {
           }).then((res) => {
             if (res.code === okCode) {
             } else {
-              this.$baseMessage(`更新菜单标题信息失败！(thai)`, "error");
+              this.$baseMessage(
+                this.$t("menu.editThaiMenuTitleFailed"),
+                "error"
+              );
             }
           });
           updateTitle({
@@ -286,10 +322,10 @@ export default {
           }).then((res) => {
             if (res.code === okCode) {
             } else {
-              this.$baseMessage(`更新菜单标题信息失败！(zh)`, "error");
+              this.$baseMessage(this.$t("menu.editZhMenuTitleFailed"), "error");
             }
           });
-          this.$baseMessage(`更新菜单信息成功！`, "success");
+          this.$baseMessage(this.$t("menu.editMenuSuccessful"), "success");
           setTimeout(() => {
             this.$router.go(0);
           }, 1000);
@@ -311,11 +347,17 @@ export default {
     },
     handleDelete(row) {
       if (row.id) {
-        this.$baseConfirm("你确定要删除当前项吗", null, async () => {
-          const { msg } = await doDelete({ ids: row.id });
-          this.$baseMessage(msg, "success");
-          this.fetchData();
-        });
+        this.$baseConfirm(
+          this.$t("menu.deleteTip1"),
+          this.$t("header.tips"),
+          this.$t("header.confirm"),
+          this.$t("header.cancel"),
+          async () => {
+            const { msg } = await doDelete({ ids: row.id });
+            this.$baseMessage(msg, "success");
+            this.fetchData();
+          }
+        );
       }
     },
     async getPermissionData() {
@@ -338,7 +380,7 @@ export default {
         }
         // this.permissions = data.items;
       } else {
-        this.$baseMessage(msg || `获取菜单权限信息失败！`, "error");
+        this.$baseMessage(this.$t("menu.getMenuPermissionFailed"), "error");
       }
     },
     async fetchData(permission) {
@@ -350,7 +392,7 @@ export default {
           this.listLoading = false;
         }, 300);
       } else {
-        this.$baseMessage(msg || `获取权限菜单信息失败！`, "error");
+        this.$baseMessage(this.$t("menu.getMenuFailed"), "error");
       }
     },
     async handleNodeClick(data) {
@@ -365,7 +407,7 @@ export default {
             this.menu.thai = res.data.title;
           } else {
             return this.$baseMessage(
-              res.msg || `获取菜单语言信息失败！(thai)`,
+              this.$t("menu.getMenuLanguageThaiFailed"),
               "error"
             );
           }
@@ -375,7 +417,7 @@ export default {
             this.menu.zh = res.data.title;
           } else {
             return this.$baseMessage(
-              res.msg || `获取菜单语言信息失败！(zh)`,
+              this.$t("menu.getMenuLanguageZhFailed"),
               "error"
             );
           }
@@ -414,50 +456,49 @@ export default {
 
     remove(node, data) {
       if (data) {
-        this.$baseConfirm("你确定要删除当前项吗", null, async () => {
-          const parent = node.parent;
-          const children = parent.data.children || parent.data;
-          const index = children.findIndex((d) => d.path === data.path);
-          children.splice(index, 1);
-          updateRouter({ router: this.data }).then((res) => {
-            if (res.code === okCode) {
-              this.data = res.data;
-            } else {
-              this.$baseMessage(`删除菜单信息失败！`, "error");
+        this.$baseConfirm(
+          this.$t("menu.deleteTip1"),
+          this.$t("header.tips"),
+          this.$t("header.confirm"),
+          this.$t("header.cancel"),
+          async () => {
+            const parent = node.parent;
+            const children = parent.data.children || parent.data;
+            const index = children.findIndex((d) => d.path === data.path);
+            children.splice(index, 1);
+            updateRouter({ router: this.data }).then((res) => {
+              if (res.code === okCode) {
+                this.data = res.data;
+              } else {
+                this.$baseMessage(this.$t("menu.deleteTip2"), "error");
+              }
+            });
+            if (data.name) {
+              deleteTitle({
+                language: "thai",
+                name: data.name,
+              }).then((res) => {
+                if (res.code === okCode) {
+                } else {
+                  this.$baseMessage(this.$t("menu.deleteTip3"), "error");
+                }
+              });
+              deleteTitle({
+                language: "zh",
+                name: data.name,
+              }).then((res) => {
+                if (res.code === okCode) {
+                } else {
+                  this.$baseMessage(this.$t("menu.deleteTip4"), "error");
+                }
+              });
             }
+            this.$baseMessage(this.$t("menu.deleteTip5"));
+            setTimeout(() => {
+              this.$router.go(0);
+            }, 1000);
+            this.fetchData();
           });
-          if (data.name) {
-            deleteTitle({
-              language: "thai",
-              name: data.name,
-            }).then((res) => {
-              if (res.code === okCode) {
-              } else {
-                this.$baseMessage(
-                  res.msg || `删除菜单标题信息失败！(thai)`,
-                  "error"
-                );
-              }
-            });
-            deleteTitle({
-              language: "zh",
-              name: data.name,
-            }).then((res) => {
-              if (res.code === okCode) {
-              } else {
-                this.$baseMessage(
-                  res.msg || `删除菜单标题信息失败！(thai)`,
-                  "error"
-                );
-              }
-            });
-          }
-          this.$baseMessage("删除菜单标题信息成功！");
-          setTimeout(() => {
-            this.$router.go(0);
-          }, 1000);
-          this.fetchData();
-        });
       }
     },
 
@@ -567,7 +608,6 @@ export default {
     }
     .addr {
       font-size: 12px;
-      color: #b4b4b4;
     }
 
     .highlighted .addr {

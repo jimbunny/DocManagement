@@ -15,17 +15,19 @@ import time
 class RolesModel(db.Model, BaseModel):
     __tablename__ = 'roles'
     id = db.Column(db.Integer, primary_key=True)
-    department = db.Column(db.String(250),  unique=True, nullable=False)
-    departmentID = db.Column(db.String(250),  unique=True, nullable=False)
-    postion = db.Column(db.String(250),  unique=True, nullable=False)
-    postionID = db.Column(db.String(250), unique=True, nullable=False)
+    # department = db.Column(db.String(250),  unique=True, nullable=False)
+    # departmentID = db.Column(db.String(250),  unique=True, nullable=False)
+    # postion = db.Column(db.String(250),  unique=True, nullable=False)
+    # postionID = db.Column(db.String(250), unique=True, nullable=False)
+    description = db.Column(db.String(50), nullable=False)
     permission = db.Column(db.String(50), default='test', nullable=False)
 
-    def __init__(self, department, departmentID, postion, postionID, permission):
-        self.department = department
-        self.departmentID = departmentID
-        self.postion = postion
-        self.postionID = postionID
+    def __init__(self, description, permission):
+        # self.department = department
+        # self.departmentID = departmentID
+        # self.postion = postion
+        # self.postionID = postionID
+        self.description = description
         self.permission = permission
 
     def __str__(self):
@@ -34,8 +36,8 @@ class RolesModel(db.Model, BaseModel):
     def paginate(self, page, per_page):
         return self.query.paginate(page=page, per_page=per_page, error_out=False)
 
-    def filter_by_postion(self, postion):
-        return self.query.filter(self.postion.like("%" + postion + "%")).all()
+    def filter_by_description(self, description):
+        return self.query.filter(self.description.like("%" + description + "%")).all()
 
     def filter_by_permission(self, permission):
         return self.query.filter(self.permission.like("%" + permission + "%")).all()
@@ -43,8 +45,8 @@ class RolesModel(db.Model, BaseModel):
     def get(self, _id):
         return self.query.filter_by(id=_id).first()
 
-    def add(self, user):
-        db.session.add(user)
+    def add(self, role):
+        db.session.add(role)
         return session_commit()
 
     def update(self):

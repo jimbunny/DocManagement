@@ -34,29 +34,29 @@
     ></byui-icon>
     <el-dropdown @command="handleCommand">
       <span style="cursor: pointer;">
-        更多操作
+        {{ $t("tags.moreAction") }}
         <i class="el-icon-arrow-down el-icon--right"></i>
       </span>
       <el-dropdown-menu slot="dropdown" class="tags-more">
         <el-dropdown-item command="refreshRoute">
           <byui-icon :icon="['fas', 'circle-notch']" />
-          刷新
+          {{ $t("tags.fresh") }}
         </el-dropdown-item>
         <el-dropdown-item command="closeOthersTags">
           <byui-icon :icon="['fas', 'times-circle']" />
-          关闭其他
+          {{ $t("tags.closeOther") }}
         </el-dropdown-item>
         <el-dropdown-item command="closeLeftTags">
           <byui-icon :icon="['fas', 'arrow-alt-circle-left']"></byui-icon>
-          关闭左侧
+          {{ $t("tags.closeLeft") }}
         </el-dropdown-item>
         <el-dropdown-item command="closeRightTags">
           <byui-icon :icon="['fas', 'arrow-alt-circle-right']"></byui-icon>
-          关闭右侧
+          {{ $t("tags.closeRight") }}
         </el-dropdown-item>
         <el-dropdown-item command="closeAllTags">
           <byui-icon :icon="['fas', 'ban']"></byui-icon>
-          关闭全部
+          {{ $t("tags.closeAll") }}
         </el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>

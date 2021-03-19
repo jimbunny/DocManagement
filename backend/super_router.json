@@ -117,7 +117,7 @@
           "name": "RouterManagement",
           "component": "configManagement/routerManagement/index",
           "meta": {
-            "title": "路由管理",
+            "title": "routeManagement",
             "permissions": [
               "superAdmin"
             ]
@@ -128,7 +128,7 @@
           "name": "LanguageManagement",
           "component": "configManagement/languageManagement/index",
           "meta": {
-            "title": "语言管理",
+            "title": "languageManagement",
             "permissions": [
               "superAdmin"
             ]

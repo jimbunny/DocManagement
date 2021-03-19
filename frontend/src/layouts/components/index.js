@@ -5,7 +5,7 @@ from "@/layouts/components/zx-side-bar";
 export { default as Breadcrumb }
 from "@/layouts/components/zx-breadcrumb";
 export { default as FullScreenBar }
-from "zx-layouts/zx-full-screen-bar";
+from "@/layouts/components/zx-full-screen-bar";
 export { default as ErrorLog }
 from "zx-layouts/zx-error-log";
 export { default as BackToTop }

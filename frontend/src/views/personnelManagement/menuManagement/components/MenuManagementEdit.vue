@@ -10,10 +10,10 @@
       :model="menu"
       status-icon
       :rules="rules"
-      label-width="120px"
+      label-width="140px"
       class="demo-ruleForm"
     >
-      <el-form-item label="alwaysShow" prop="alwaysShow">
+      <el-form-item :label="$t('menu.alwaysShow')" prop="alwaysShow">
         <el-switch
           v-model="menu.alwaysShow"
           active-color="#13ce66"
@@ -25,17 +25,20 @@
           <el-radio label="multi"></el-radio>
         </el-radio-group> -->
       </el-form-item>
-      <el-form-item label="name" prop="name">
+      <el-form-item :label="$t('menu.name')" prop="name">
         <el-input v-model="menu.name" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="path" prop="path">
+      <el-form-item :label="$t('menu.path')" prop="path">
         <el-input v-model="menu.path" disabled></el-input>
       </el-form-item>
-      <el-form-item label="中文" prop="zh">
-        <el-input v-model="menu.zh" placeholder="请输入中文标题"></el-input>
+      <el-form-item :label="$t('menu.zh')" prop="zh">
+        <el-input v-model="menu.zh" :placeholder="$t('menu.zhTip')"></el-input>
       </el-form-item>
-      <el-form-item label="泰文" prop="thai">
-        <el-input v-model="menu.thai" placeholder="请输入泰语标题"></el-input>
+      <el-form-item :label="$t('menu.thai')" prop="thai">
+        <el-input
+          v-model="menu.thai"
+          :placeholder="$t('menu.thaiTip')"
+        ></el-input>
       </el-form-item>
       <el-form-item label="icon" prop="icon">
         <!-- <el-input v-model="menu.checkPass" type="password" autocomplete="off"></el-input> -->
@@ -43,7 +46,7 @@
           v-model="menu.icon"
           popper-class="my-autocomplete"
           :fetch-suggestions="querySearch"
-          placeholder="请选择图标"
+          :placeholder="$t('menu.iconTip')"
           style="width: 100%;"
           @select="handleSelect"
         >
@@ -64,7 +67,7 @@
           </template>
         </el-autocomplete>
       </el-form-item>
-      <el-form-item label="permissions" prop="permissions">
+      <el-form-item :label="$t('menu.permission')" prop="permissions">
         <el-tree
           ref="permissionTree"
           :props="props"
@@ -81,10 +84,10 @@
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
-      <el-button @click="close">取 消</el-button>
+      <el-button @click="close">{{ $t("menu.close") }}</el-button>
       <el-button type="primary" @click="submitForm('ruleForm')"
-        >确 定</el-button
-      >
+        >{{ $t("menu.save") }}
+      </el-button>
     </div>
   </el-dialog>
 </template>
@@ -104,10 +107,31 @@ export default {
   data() {
     var validateName = (rule, value, callback) => {
       if (!value) {
-        return callback(new Error("name不能为空！"));
+        return callback(new Error(this.$t("menu.nameEmptyTip")));
       }
       if (this.checkName(this.data, value, false)) {
-        return callback(new Error("该name已存在！"));
+        return callback(new Error(this.$t("menu.nameExitTip")));
+      } else {
+        callback();
+      }
+    };
+    var validatePath = (rule, value, callback) => {
+      if (!value) {
+        return callback(new Error(this.$t("menu.pathTip")));
+      } else {
+        callback();
+      }
+    };
+    var validateThai = (rule, value, callback) => {
+      if (!value) {
+        return callback(new Error(this.$t("menu.thaiTip")));
+      } else {
+        callback();
+      }
+    };
+    var validateZh = (rule, value, callback) => {
+      if (!value) {
+        return callback(new Error(this.$t("menu.zhTip")));
       } else {
         callback();
       }
@@ -118,7 +142,7 @@ export default {
         children: "children",
       },
       listLoading: true,
-      elementLoadingText: "正在加载...",
+      elementLoadingText: this.$t("menu.loading"),
       menu: {
         name: "",
         path: "",
@@ -127,7 +151,7 @@ export default {
         thai: "",
         // type: "",
         alwaysShow: true,
-        permissions: [],
+        permissions: ["superAdmin"],
       },
       rules: {
         // type: [{ required: true, trigger: "blur", message: "请选择类型" }],
@@ -136,16 +160,15 @@ export default {
             validator: validateName,
             required: true,
             trigger: "blur",
-            message: "请输入名称",
           },
         ],
-        path: [{ required: true, trigger: "blur", message: "请输入路径" }],
-        thai: [{ required: true, trigger: "blur", message: "请输入泰文标题" }],
-        zh: [{ required: true, trigger: "blur", message: "请输入中文标题" }],
+        path: [{ required: true, trigger: "blur", validator: validatePath }],
+        thai: [{ required: true, trigger: "blur", validator: validateThai }],
+        zh: [{ required: true, trigger: "blur", validator: validateZh }],
         // icon: [{ required: true, trigger: "blur", message: "请选择图标" }],
-        permissions: [
-          { required: true, trigger: "blur", message: "请选择角色" },
-        ],
+        // permissions: [
+        //   { required: true, trigger: "blur", message: "请选择角色" },
+        // ],
       },
       permissions: [],
       queryIcon: [],
@@ -154,7 +177,7 @@ export default {
         pageSize: 72,
         title: "",
       },
-      title: "添加",
+      title: this.$t("menu.add"),
       data: [],
       dialogFormVisible: false,
       status: false,
@@ -174,7 +197,7 @@ export default {
     if (code === okCode) {
       this.data = data;
     } else {
-      this.$baseMessage(msg || `获取菜单信息失败！`, "error");
+      this.$baseMessage(this.$t("menu.getMenuFailed"), "error");
     }
     //获取权限信息
     this.getPermissionData();
@@ -191,7 +214,7 @@ export default {
       //   this.$set(data, "children", []);
       // }
       // data.children.push(newChild);
-      this.title = "添加";
+      this.title = this.$t("menu.add");
       this.data = menuData;
       this.dialogFormVisible = true;
     },
@@ -324,7 +347,7 @@ export default {
             if (res.code === okCode) {
               this.data = res.data;
             } else {
-              this.$baseMessage(msg || `添加菜单信息失败！`, "error");
+              this.$baseMessage(this.$t("menu.addMenuFailed"), "error");
             }
           });
           updateTitle({
@@ -335,7 +358,10 @@ export default {
           }).then((res) => {
             if (res.code === okCode) {
             } else {
-              this.$baseMessage(msg || `添加菜单标题信息失败！(thai)`, "error");
+              this.$baseMessage(
+                this.$t("menu.addMenuTitleThaiFailed"),
+                "error"
+              );
             }
           });
           updateTitle({
@@ -346,10 +372,10 @@ export default {
           }).then((res) => {
             if (res.code === okCode) {
             } else {
-              this.$baseMessage(msg || `添加菜单标题信息失败！(zh)`, "error");
+              this.$baseMessage(this.$t("menu.addMenuTitleZhFailed"), "error");
             }
           });
-          this.$baseMessage(`添加菜单信息成功！`, "success");
+          this.$baseMessage(this.$t("menu.addMenuSuccessful"), "success");
           setTimeout(() => {
             this.$router.go(0);
           }, 1000);
@@ -379,7 +405,7 @@ export default {
         }
         // this.permissions = data.items;
       } else {
-        this.$baseMessage(msg || `获取菜单权限信息失败！`, "error");
+        this.$baseMessage(this.$t("menu.getMenuPermissionFailed"), "error");
       }
     },
     async fetchData(permission) {
@@ -391,7 +417,7 @@ export default {
           this.listLoading = false;
         }, 300);
       } else {
-        this.$baseMessage(msg || `获取权限菜单信息失败！`, "error");
+        this.$baseMessage(this.$t("menu.getMenuPermissionFailed"), "error");
       }
     },
     async handleNodeClick(data) {
@@ -405,7 +431,7 @@ export default {
             this.menu.thai = res.data.title;
           } else {
             return this.$baseMessage(
-              res.msg || `获取菜单语言信息失败！(thai)`,
+              this.$t("menu.getMenuLanguageThaiFailed"),
               "error"
             );
           }
@@ -415,7 +441,7 @@ export default {
             this.menu.zh = res.data.title;
           } else {
             return this.$baseMessage(
-              res.msg || `获取菜单语言信息失败！(zh)`,
+              this.$t("menu.getMenuLanguageZhFailed"),
               "error"
             );
           }

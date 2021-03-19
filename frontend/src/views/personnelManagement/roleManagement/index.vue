@@ -5,24 +5,27 @@
         <byui-query-form>
           <byui-query-form-left-panel :span="12">
             <el-button icon="el-icon-plus" type="primary" @click="handleEdit"
-              >添加</el-button
-            >
+              >{{ $t("role.add") }}
+            </el-button>
             <el-button icon="el-icon-delete" type="danger" @click="handleDelete"
-              >批量删除
+              >{{ $t("role.batchDelete") }}
             </el-button>
           </byui-query-form-left-panel>
           <byui-query-form-right-panel :span="12">
             <el-form :inline="true" :model="queryForm" @submit.native.prevent>
               <el-form-item>
                 <el-input
-                  v-model.trim="queryForm.postion"
-                  placeholder="请输入职位"
+                  v-model.trim="queryForm.description"
+                  :placeholder="$t('role.descriptionTip')"
                   clearable
                 />
               </el-form-item>
               <el-form-item>
-                <el-button icon="el-icon-search" type="primary" @click="queryData"
-                  >查询
+                <el-button
+                  icon="el-icon-search"
+                  type="primary"
+                  @click="queryData"
+                  >{{ $t("role.search") }}
                 </el-button>
               </el-form-item>
             </el-form>
@@ -37,20 +40,26 @@
           @current-change="handleSignleChange"
         >
           <el-table-column type="selection"></el-table-column>
-          <el-table-column prop="id" label="id"></el-table-column>
+          <el-table-column prop="id" :label="$t('role.id')"></el-table-column>
           <!--<el-table-column prop="department" label="部门"></el-table-column>
           <el-table-column prop="departmentID" label="部门ID"></el-table-column>
           <el-table-column prop="postion" label="职位"></el-table-column>
           <el-table-column prop="postionID" label="职位ID"></el-table-column> -->
-          <el-table-column prop="permission" label="权限码"></el-table-column>
-          <el-table-column prop="postionID" label="描述"></el-table-column> 
-          <el-table-column fixed="right" label="操作" width="200">
+          <el-table-column
+            prop="permission"
+            :label="$t('role.permission')"
+          ></el-table-column>
+          <el-table-column
+            prop="description"
+            :label="$t('role.description')"
+          ></el-table-column>
+          <el-table-column fixed="right" :label="$t('role.action')" width="200">
             <template v-slot="scope">
               <el-button type="text" @click="handleEdit(scope.row)"
-                >编辑
+                >{{ $t("role.edit") }}
               </el-button>
               <el-button type="text" @click="handleDelete(scope.row)"
-                >删除
+                >{{ $t("role.delete") }}
               </el-button>
             </template>
           </el-table-column>
@@ -69,13 +78,16 @@
       </el-col>
       <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="8">
         <byui-query-form style="margin-top: 5px;">
-          <byui-query-form-left-panel :span="12">
-            <el-input v-model="filterText" placeholder="输入关键字进行过滤">
+          <byui-query-form-left-panel :span="16">
+            <el-input v-model="filterText" :placeholder="$t('role.filterText')">
             </el-input>
           </byui-query-form-left-panel>
-          <byui-query-form-right-panel :span="12">
-            <el-button icon="el-icon-edit" type="primary" @click="updatePermissionMenu"
-              >更新
+          <byui-query-form-right-panel :span="8">
+            <el-button
+              icon="el-icon-edit"
+              type="primary"
+              @click="updatePermissionMenu"
+              >{{ $t("role.update") }}
             </el-button>
           </byui-query-form-right-panel>
         </byui-query-form>
@@ -122,11 +134,11 @@ export default {
       layout: "total, sizes, prev, pager, next, jumper",
       total: 0,
       selectRows: "",
-      elementLoadingText: "正在加载...",
+      elementLoadingText: this.$t("role.loading"),
       queryForm: {
         pageNo: 1,
         pageSize: 10,
-        postion: "",
+        description: "",
       },
       data: [],
       filterText: "",
@@ -148,7 +160,7 @@ export default {
     if (code === okCode) {
       this.data = data;
     } else {
-      this.$baseMessage(msg || `获取菜单信息失败！`, "error");
+      this.$baseMessage(this.$t("role.getMenuFailed"), "error");
     }
     this.fetchData();
   },
@@ -156,7 +168,7 @@ export default {
     generateTitle,
     updatePermissionMenu() {
       if (this.currentRow == null) {
-        this.$baseMessage(`请选择权限码！`, "error");
+        this.$baseMessage(this.$t("role.getMenuFailed"), "error");
         return;
       }
       doPermissionEdit({
@@ -164,21 +176,26 @@ export default {
         names: this.$refs.tree.getCheckedKeys(),
       }).then((res) => {
         if (res.code === okCode) {
-          this.$baseMessage(`修改权限菜单信息成功！`, "success");
+          this.$baseMessage(
+            this.$t("role.editPermissionMenuSuccessful"),
+            "success"
+          );
         } else {
-          this.$baseMessage(`修改权限菜单信息失败！`, "error");
+          this.$baseMessage(this.$t("role.editPermissionMenuFailed"), "error");
         }
       });
     },
     handleSignleChange(val) {
-      this.currentRow = val;
-      getCheckedMenu({ permission: val.permission }).then((res) => {
-        if (res.code === okCode) {
-          this.$refs.tree.setCheckedKeys(res.data);
-        } else {
-          this.$baseMessage(`获取权限菜单信息失败！`, "error");
-        }
-      });
+      if (val) {
+        this.currentRow = val;
+        getCheckedMenu({ permission: val.permission }).then((res) => {
+          if (res.code === okCode) {
+            this.$refs.tree.setCheckedKeys(res.data);
+          } else {
+            this.$baseMessage(this.$t("role.getPermissionMenuFailed"), "error");
+          }
+        });
+      }
     },
     setSelectRows(val) {
       this.selectRows = val;
@@ -193,12 +210,23 @@ export default {
     handleDelete(row) {
       if (row.id) {
         this.$baseConfirm(
-          "你确定要删除当前职位为" + row.postion + "的数据吗",
-          null,
+          this.$t("role.deleteTip1") +
+            row.permission +
+            this.$t("role.deleteTip2"),
+          this.$t("header.tips"),
+          this.$t("header.confirm"),
+          this.$t("header.cancel"),
           () => {
             doDelete({ ids: [row.id] }).then((res) => {
-              this.$baseMessage(res.msg, "success");
-              this.fetchData();
+              if (code === okCode) {
+                this.$baseMessage(
+                  this.$t("role.deleteRoleSuccessful"),
+                  "success"
+                );
+                this.fetchData();
+              } else {
+                this.$baseMessage(this.$t("role.deleteRoleFailed"), "error");
+              }
             });
           }
         );
@@ -207,14 +235,26 @@ export default {
           const ids = [];
           this.selectRows.map((item) => ids.push(item.id));
           // const ids = this.selectRows.map((item) => item.id).join();
-          this.$baseConfirm("你确定要删除选中项吗", null, () => {
-            doDelete({ ids: ids }).then((res) => {
-              this.$baseMessage(res.msg, "success");
-              this.fetchData();
+          this.$baseConfirm(
+            this.$t("role.deleteTip3"),
+            this.$t("header.tips"),
+            this.$t("header.confirm"),
+            this.$t("header.cancel"),
+            () => {
+              doDelete({ ids: ids }).then((res) => {
+                if (code === okCode) {
+                  this.$baseMessage(
+                    this.$t("role.deleteRoleSuccessful"),
+                    "success"
+                  );
+                  this.fetchData();
+                } else {
+                  this.$baseMessage(this.$t("role.deleteRoleFailed"), "error");
+                }
+              });
             });
-          });
         } else {
-          this.$baseMessage("未选中任何行", "error");
+          this.$baseMessage(this.$t("role.deleteTip4"), "error");
           return false;
         }
       }
@@ -242,7 +282,7 @@ export default {
             this.listLoading = false;
           }, 300);
         } else {
-          this.$baseMessage(msg || `获取权限信息失败！`, "error");
+          this.$baseMessage(this.$t("role.getPermissionFailed"), "error");
         }
       });
     },

@@ -13,7 +13,7 @@
           label-position="left"
         >
           <div class="title">hello !</div>
-          <div class="title-tips">欢迎来到{{ title }}！</div>
+          <div class="title-tips">Welcome {{ title }}！</div>
           <el-form-item
             style="margin-top: 49px;"
             prop="username"
@@ -26,7 +26,7 @@
               v-model.trim="loginForm.username"
               v-focus
               auto-complete="off"
-              placeholder="请输入用户名"
+              placeholder="Please input username"
               tabindex="1"
               type="text"
             />
@@ -41,7 +41,7 @@
               v-model.trim="loginForm.password"
               :type="passwordType"
               auto-complete="off"
-              placeholder="请输入密码"
+              placeholder="Please input password"
               tabindex="2"
               @keyup.enter.native="handleLogin"
             />
@@ -61,7 +61,7 @@
             class="login-btn"
             type="primary"
             @click="handleLogin"
-            >登录</el-button
+            >Login</el-button
           >
         </el-form>
       </el-col>
@@ -86,14 +86,14 @@ export default {
   data() {
     const validateUserName = (rule, value, callback) => {
       if ("" == value) {
-        callback(new Error("用户名不能为空"));
+        callback(new Error("Please input username"));
       } else {
         callback();
       }
     };
     const validatePassword = (rule, value, callback) => {
       if (!isPassword(value)) {
-        callback(new Error("密码不能少于8位"));
+        callback(new Error("Password length cannot be less than 8 digits"));
       } else {
         callback();
       }

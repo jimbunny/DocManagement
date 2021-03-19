@@ -29,12 +29,14 @@ api.add_resource(menuManagement.MenuManagementResource, '/menuManagement/doPermi
 api.add_resource(userManagement.UserManagementResource, '/userManagement/getList', endpoint='getUser')
 api.add_resource(userManagement.UserManagementResource, '/userManagement/doEdit', endpoint='editUser')
 api.add_resource(userManagement.UserManagementResource, '/userManagement/doDelete', endpoint='deleteUser')
+api.add_resource(userManagement.UserManagementResource, '/userManagement/doEditUser', endpoint='postUser')
 api.add_resource(login.RegisterResource, '/userManagement/doAdd', endpoint='addUser')
 # role management
 api.add_resource(roleManagement.RoleManagementResource, '/roleManagement/getList', endpoint='getRole')
 api.add_resource(roleManagement.RoleManagementResource, '/roleManagement/doAdd', endpoint='addRole')
 api.add_resource(roleManagement.RoleManagementResource, '/roleManagement/doEdit', endpoint='editRole')
 api.add_resource(roleManagement.RoleManagementResource, '/roleManagement/doDelete', endpoint='deleteRole')
+api.add_resource(roleManagement.PermissionResource, '/roleManagement/checkPermission', endpoint='postCheckPermission')
 
 api.add_resource(iconManagement.ColorfulIconResource, '/icon/getList')
 

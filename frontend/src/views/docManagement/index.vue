@@ -9,7 +9,7 @@
           :default-expanded-keys="['root']"
           @node-click="handleNodeClick"
         ></el-tree>-->
-        <el-input v-model="filterText" placeholder="输入关键字进行过滤">
+        <el-input v-model="filterText" :placeholder="$t('docs.filterMenu')">
         </el-input>
         <div class="block">
           <el-tree
@@ -40,7 +40,7 @@
           :rules="rules"
           label-width="80px"
         >
-          <el-form-item label="标题" prop="title">
+          <el-form-item :label="$t('docs.title')" prop="title">
             <el-input v-model="form.title" maxlength="20"></el-input>
           </el-form-item>
           <!--<el-form-item label="菜单" prop="menu">
@@ -52,13 +52,13 @@
             >
             </el-cascader>
           </el-form-item> -->
-          <el-form-item label="语言" prop="language">
+          <el-form-item :label="$t('docs.language')" prop="language">
             <el-select v-model="form.language">
-              <el-option label="中文" value="zh"></el-option>
-              <el-option label="泰语" value="thai"></el-option>
+              <el-option :label="$t('docs.zh')" value="zh"></el-option>
+              <el-option :label="$t('docs.thai')" value="thai"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="内容" prop="content">
+          <el-form-item :label="$t('docs.content')" prop="content">
             <quill-editor
               v-model="form.content"
               :style="{
@@ -71,13 +71,20 @@
             ></quill-editor>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="handleSee">预览效果 </el-button>
-            <el-button type="primary" @click="handleSave">保存</el-button>
+            <el-button type="primary" @click="handleSee">
+              {{ $t("docs.previewEffect") }}
+            </el-button>
+            <el-button type="primary" @click="handleSave">{{
+              $t("docs.save")
+            }}</el-button>
           </el-form-item>
         </el-form>
       </el-col>
     </el-row>
-    <el-dialog title="预览效果" :visible.sync="dialogTableVisible">
+    <el-dialog
+      :title="$t('docs.previewEffect')"
+      :visible.sync="dialogTableVisible"
+    >
       <div style="min-height: 60vh;">
         <h1 class="news-title">{{ form.title }}</h1>
         <div class="news-content ql-editor" v-html="form.content"></div>
@@ -109,7 +116,7 @@ export default {
       },
       list: [],
       listLoading: true,
-      elementLoadingText: "正在加载...",
+      elementLoadingText: this.$t("docs.loading"),
       borderColor: "#dcdfe6",
       dialogTableVisible: false,
       path: "",
@@ -147,28 +154,28 @@ export default {
         title: [
           {
             required: true,
-            message: "请输入标题",
+            message: this.$t("docs.titleTip"),
             trigger: "blur",
           },
         ],
         menu: [
           {
             required: true,
-            message: "请选择菜单",
+            message: this.$t("docs.menuTip"),
             trigger: "change",
           },
         ],
         language: [
           {
             required: true,
-            message: "请选择语言",
+            message: this.$t("docs.languageTip"),
             trigger: "change",
           },
         ],
         content: [
           {
             required: true,
-            message: "请输入内容",
+            message: this.$t("docs.contentTip"),
             trigger: "blur",
           },
         ],
@@ -187,7 +194,7 @@ export default {
             this.form = data;
             // this.$baseMessage("get doc successful!", "success");
           } else {
-            this.$baseMessage(msg || `get doc failed！`, "error");
+            this.$baseMessage(this.$t("docs.getDocFailed"), "error");
           }
         }
       );
@@ -200,14 +207,14 @@ export default {
     if (code === okCode) {
       this.data = data;
     } else {
-      this.$baseMessage(msg || `获取菜单信息失败！`, "error");
+      this.$baseMessage(this.$t("docs.getMenuFailed"), "error");
     }
     // const roleData = await getTree();
     // this.data = roleData.data;
     // this.fetchData();
   },
   methods: {
-    handleCustomMatcher(node,Delta) {
+    handleCustomMatcher(node, Delta) {
       // let ops = []
       // Delta.ops.forEach(op => {
       //   if (op.insert && typeof op.alt === 'string') {
@@ -216,7 +223,7 @@ export default {
       // })
       // Delta.ops = ops
       // console.log(Delta.ops)
-      return Delta
+      return Delta;
     },
     generateTitle,
     async fetchData() {
@@ -241,7 +248,7 @@ export default {
           this.form = data;
           // this.$baseMessage("get doc successful!", "success");
         } else {
-          this.$baseMessage(msg || `get doc failed！`, "error");
+          this.$baseMessage(this.$t("docs.getDocFailed"), "error");
         }
       });
     },
@@ -286,9 +293,9 @@ export default {
           addFile(this.form).then((res) => {
             const { code, msg, data } = res;
             if (code === okCode) {
-              this.$baseMessage("add doc successful!", "success");
+              this.$baseMessage(this.$t("docs.saveDocSuccessful"), "success");
             } else {
-              this.$baseMessage(msg || `add doc failed！`, "error");
+              this.$baseMessage(this.$t("docs.saveDocFailed"), "error");
             }
           });
         } else {

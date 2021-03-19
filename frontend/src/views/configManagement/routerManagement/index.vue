@@ -4,12 +4,12 @@
       <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
-            <span>路由</span>
+            <span>Router</span>
             <el-button
               style="float: right; padding: 3px 0;"
               type="text"
               @click="handleChangeRouter()"
-              >更新</el-button
+              >Update</el-button
             >
           </div>
           <div class="text item">
@@ -18,7 +18,10 @@
         </el-card>
       </el-col>
       <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-        <el-input v-model="filterText" placeholder="输入关键字进行过滤">
+        <el-input
+          v-model="filterText"
+          placeholder="Please enter Keyword to filter"
+        >
         </el-input>
         <div class="block">
           <el-tree
@@ -86,8 +89,9 @@ export default {
         (res) => {
           if (res.code === okCode) {
             this.router = res.data;
+            this.$baseMessage("update Router successful!", "success");
           } else {
-            this.$baseMessage(`更新路由信息失败！`, "error");
+            this.$baseMessage(`update Router failed`, "error");
           }
         }
       );

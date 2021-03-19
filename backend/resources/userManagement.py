@@ -68,14 +68,34 @@ class UserManagementResource(Resource):
         return pretty_result(code.OK, data=data, msg='用户信息获取成功！')
 
     @login_required
+    def post(self):
+        self.parser.add_argument("id", type=int, required=True, location="json", help='id is required')
+        self.parser.add_argument("email", type=inputs.regex(r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)'),
+                                 required=True, location="json",
+                                 help='email format is incorrect')
+        self.parser.add_argument("password", type=password_len, location="json", trim=True)
+        args = self.parser.parse_args()
+        userEmailInfo = UsersModel.query.filter_by(email=args.email).all()
+        for item in userEmailInfo:
+            if item.id != args.id:
+                return pretty_result(code.ERROR, msg='该邮箱已经被注册！')
+        userInfo = UsersModel.query.filter_by(id=args.id).first()
+        userInfo.email = args.email
+        if args.password:
+            userInfo.password = UsersModel.set_password(UsersModel, args.password)
+        UsersModel.update(userInfo)
+        return pretty_result(code.OK, msg='用户信息更新成功！')
+
+    @login_required
     def put(self):
         self.parser.add_argument("id", type=int, required=True, location="json", help='id is required')
         self.parser.add_argument("email", type=inputs.regex(r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)'),
                                  required=True, location="json",
                                  help='email format is incorrect')
-        self.parser.add_argument("permission", type=str, choices=['test', 'guest', 'user', 'admin', 'superAdmin'],
-                                 required=True, location="json",
-                                 help='permission is required and only (test,user,admin,superAdmin)')
+        # self.parser.add_argument("permission", type=str, choices=['test', 'guest', 'user', 'admin', 'superAdmin'],
+        #                          required=True, location="json",
+        #                          help='permission is required and only (test,user,admin,superAdmin)')
+        self.parser.add_argument("permission", type=str, required=True, location="json", help='permission is required')
         self.parser.add_argument("password", type=password_len, location="json", trim=True)
         args = self.parser.parse_args()
         userEmailInfo = UsersModel.query.filter_by(email=args.email).all()

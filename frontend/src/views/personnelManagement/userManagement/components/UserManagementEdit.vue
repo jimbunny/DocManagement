@@ -8,27 +8,27 @@
     <el-form
       ref="form"
       :model="form"
-      :rules="title === '添加' ? addRules : editRules"
-      label-width="80px"
+      :rules="status === 'add' ? addRules : editRules"
+      label-width="140px"
     >
-      <el-form-item label="用户名" prop="username">
+      <el-form-item :label="$t('user.username')" prop="username">
         <el-input
           v-model.trim="form.username"
           autocomplete="off"
-          :disabled="title === '编辑'"
+          :disabled="status === 'edit'"
         ></el-input>
       </el-form-item>
-      <el-form-item label="密码" prop="password">
+      <el-form-item :label="$t('user.password')" prop="password">
         <el-input
           v-model.trim="form.password"
           type="password"
           autocomplete="off"
         ></el-input>
       </el-form-item>
-      <el-form-item label="邮箱" prop="email">
+      <el-form-item :label="$t('user.email')" prop="email">
         <el-input v-model.trim="form.email" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="权限" prop="permission">
+      <el-form-item :label="$t('user.permission')" prop="permission">
         <!-- <el-checkbox-group v-model="form.permission">
           <el-checkbox label="superAdmin" v></el-checkbox>
           <el-checkbox label="admin"></el-checkbox>
@@ -36,17 +36,35 @@
           <el-checkbox label="user"></el-checkbox>
           <el-checkbox label="test"></el-checkbox>
         </el-checkbox-group> -->
-        <el-radio v-model="form.permission" label="superAdmin"
+        <el-select
+          v-model="form.permission"
+          filterable
+          :placeholder="$t('user.permissionTip')"
+          style="width: 100%;"
+        >
+          <el-option
+            v-for="item in list"
+            :key="item.permission"
+            :label="item.permission"
+            :value="item.permission"
+          >
+            <span style="float: left;">{{ item.permission }}</span>
+            <span style="float: right; color: #8492a6; font-size: 13px;">{{
+              item.description
+            }}</span>
+          </el-option>
+        </el-select>
+        <!--  <el-radio v-model="form.permission" label="superAdmin"
           >超级管理员</el-radio
         >
         <el-radio v-model="form.permission" label="admin">管理员</el-radio>
-        <!-- <el-radio v-model="form.permission" label="guest">游客</el-radio> -->
-        <el-radio v-model="form.permission" label="test">普通用户</el-radio>
+        <el-radio v-model="form.permission" label="guest">游客</el-radio> 
+        <el-radio v-model="form.permission" label="test">普通用户</el-radio> -->
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
-      <el-button @click="close">取 消</el-button>
-      <el-button type="primary" @click="save">确 定</el-button>
+      <el-button @click="close">{{ $t("user.close") }}</el-button>
+      <el-button type="primary" @click="save">{{ $t("user.save") }}</el-button>
     </div>
   </el-dialog>
 </template>
@@ -55,41 +73,48 @@
 import { isPassword } from "@/utils/validate";
 import { doEdit, doAdd } from "@/api/userManagement";
 import { okCode, errorCode } from "@/config/settings";
-
+import { getList } from "@/api/roleManagement";
 export default {
   name: "UserManagementEdit",
   data() {
     const validateUserName = (rule, value, callback) => {
       if ("" == value) {
-        callback(new Error("用户名不能为空"));
+        callback(new Error(this.$t("user.usernameEmptyTip")));
       } else {
         callback();
       }
     };
     const validatePassword = (rule, value, callback) => {
       if (!isPassword(value)) {
-        callback(new Error("密码不能少于8位"));
+        callback(new Error(this.$t("user.passowrdLengthTip")));
       } else {
         callback();
       }
     };
     const validateEditPassword = (rule, value, callback) => {
       if (value && !isPassword(value)) {
-        callback(new Error("密码不能少于8位"));
+        callback(new Error(this.$t("user.passowrdLengthTip")));
       } else {
         callback();
       }
     };
     const validateEmail = (rule, value, callback) => {
       if (value === "") {
-        callback(new Error("请正确填写邮箱"));
+        callback(new Error(this.$t("user.emailEmpty")));
       } else {
         if (value !== "") {
           var reg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
           if (!reg.test(value)) {
-            callback(new Error("请输入有效的邮箱"));
+            callback(new Error(this.$t("user.emailVerification")));
           }
         }
+        callback();
+      }
+    };
+    const validatePermission = (rule, value, callback) => {
+      if (value === "") {
+        callback(new Error(this.$t("user.permissionTip")));
+      } else {
         callback();
       }
     };
@@ -98,7 +123,7 @@ export default {
         username: "",
         password: "12345678",
         email: "",
-        permission: "test",
+        permission: "",
       },
       addRules: {
         username: [
@@ -109,7 +134,11 @@ export default {
         ],
         email: [{ required: true, trigger: "blur", validator: validateEmail }],
         permission: [
-          { required: true, trigger: "blur", message: "请选择权限" },
+          {
+            required: true,
+            trigger: "blur",
+            validator: validatePermission,
+          },
         ],
       },
       editRules: {
@@ -119,20 +148,41 @@ export default {
         password: [{ trigger: "blur", validator: validateEditPassword }],
         email: [{ required: true, trigger: "blur", validator: validateEmail }],
         permission: [
-          { required: true, trigger: "blur", message: "请选择权限" },
+          {
+            required: true,
+            trigger: "blur",
+            validator: validatePermission,
+          },
         ],
       },
       title: "",
+      status: "",
       dialogFormVisible: false,
+      list: [],
     };
   },
-  created() {},
+  created() {
+    getList({
+      pageNo: 1,
+      pageSize: 100000,
+      description: "",
+    }).then((res) => {
+      const { code, msg, data } = res;
+      if (code === okCode) {
+        this.list = data.items;
+      } else {
+        this.$baseMessage(this.$t("user.getPermissionFailed"), "error");
+      }
+    });
+  },
   methods: {
     showEdit(row) {
       if (!row) {
-        this.title = "添加";
+        this.title = this.$t("user.add");
+        this.status = "add";
       } else {
-        this.title = "编辑";
+        this.title = this.$t("user.edit");
+        this.status = "edit";
         this.form = Object.assign({}, row);
       }
       this.dialogFormVisible = true;
@@ -145,26 +195,30 @@ export default {
     save() {
       this.$refs["form"].validate((valid) => {
         if (valid) {
-          if (this.title === "添加") {
+          // if (this.title === "添加") {
+          if (this.status === "add") {
             doAdd(this.form).then((res) => {
               const { code, msg, data } = res;
               if (code === okCode) {
-                this.$baseMessage(res.msg || `添加用户信息成功！`, "success");
+                this.$baseMessage(this.$t("user.addUserSuccessful"), "success");
                 this.$emit("fetchData");
                 this.close();
               } else {
-                this.$baseMessage(msg || `添加用户信息失败！`, "error");
+                this.$baseMessage(this.$t("user.addUserFailed"), "error");
               }
             });
           } else {
             doEdit(this.form).then((res) => {
               const { code, msg, data } = res;
               if (code === okCode) {
-                this.$baseMessage(res.msg || `编辑用户信息成功！`, "success");
+                this.$baseMessage(
+                  this.$t("user.editUserSuccessful"),
+                  "success"
+                );
                 this.$emit("fetchData");
                 this.close();
               } else {
-                this.$baseMessage(msg || `编辑用户信息失败！`, "error");
+                this.$baseMessage(this.$t("user.editUserFailed"), "error");
               }
             });
           }
