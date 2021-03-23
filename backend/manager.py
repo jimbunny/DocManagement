@@ -105,7 +105,7 @@ def debug():
     file_log_handler.setFormatter(formatter)
     logging.getLogger().addHandler(file_log_handler)
 
-    app.run(debug=True)
+    app.run(host="0.0.0.0", debug=True)
 
 
 if __name__ == '__main__':
