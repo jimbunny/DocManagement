@@ -79,6 +79,9 @@
           <el-form-item :label="$t('menu.path')" prop="path">
             <el-input v-model="menu.path" disabled></el-input>
           </el-form-item>
+          <el-form-item :label="$t('menu.component')" prop="component">
+            <el-input v-model="menu.component"></el-input>
+          </el-form-item>
           <el-form-item :label="$t('menu.zh')" prop="zh">
             <el-input
               v-model="menu.zh"
@@ -218,6 +221,7 @@ export default {
         thai: "",
         alwaysShow: false,
         permissions: [],
+        component: "",
       },
       rules: {
         // type: [{ required: true, trigger: "blur", message: "请选择类型" }],
@@ -270,6 +274,7 @@ export default {
             }
             orgList[i]["name"] = menu.name;
             orgList[i]["path"] = menu.path;
+            orgList[i]["component"] = menu.component;
             orgList[i]["alwaysShow"] = menu.alwaysShow;
             if (menu.icon) {
               orgList[i]["meta"]["icon"] = menu.icon;
@@ -278,7 +283,6 @@ export default {
               orgList[i]["meta"]["permissions"] = menu.permissions;
             }
             orgList[i]["meta"]["title"] = menu.name;
-            orgList[i]["meta"]["component"] = "showDoc/index";
             break;
           }
           if (orgList[i].children) {
@@ -399,6 +403,7 @@ export default {
       this.menu.name = data.name;
       this.menu.path = data.path;
       this.menu.alwaysShow = data.alwaysShow;
+      this.menu.component = data.component;
       if (data.meta) {
         this.menu.icon = data.meta.icon;
         this.menu.permissions = [];

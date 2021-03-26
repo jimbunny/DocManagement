@@ -33,7 +33,68 @@
             "title": "docManagement",
             "icon": "marker",
             "permissions": [
-              "superAdmin",
+              "SuperAdmin",
+              "admin"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "path": "/test",
+      "component": "Layout",
+      "redirect": "/test",
+      "children": [
+        {
+          "path": "/test",
+          "name": "Test",
+          "component": "test/index",
+          "meta": {
+            "title": "test",
+            "icon": "bookmark",
+            "permissions": [
+              "SuperAdmin",
+              "admin"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "path": "/approvalFlow",
+      "component": "Layout",
+      "redirect": "noRedirect",
+      "name": "ApprovalFlow",
+      "alwaysShow": true,
+      "meta": {
+        "title": "approvalFlow",
+        "icon": "calculator",
+        "permissions": [
+          "SuperAdmin",
+          "admin"
+        ]
+      },
+      "children": [
+        {
+          "path": "/approvalConfig",
+          "name": "ApprovalConfig",
+          "component": "approvalFlow/approvalConfig/index",
+          "meta": {
+            "title": "approvalConfig",
+            "permissions": [
+              "SuperAdmin",
+              "admin"
+            ]
+          }
+        },
+        {
+          "path": "/approvalTask",
+          "name": "ApprovalTask",
+          "component": "approvalFlow/approvalTask/index",
+          "meta": {
+            "title": "approvalTask",
+            "permissions": [
+              "SuperAdmin",
               "admin"
             ]
           }
@@ -45,11 +106,12 @@
       "component": "Layout",
       "redirect": "noRedirect",
       "name": "PersonnelManagement",
+      "alwaysShow": false,
       "meta": {
         "title": "configManagement",
         "icon": "users-cog",
         "permissions": [
-          "superAdmin",
+          "SuperAdmin",
           "admin"
         ]
       },
@@ -61,7 +123,7 @@
           "meta": {
             "title": "userManagement",
             "permissions": [
-              "superAdmin",
+              "SuperAdmin",
               "admin"
             ]
           }
@@ -73,7 +135,7 @@
           "meta": {
             "title": "roleManagement",
             "permissions": [
-              "superAdmin",
+              "SuperAdmin",
               "admin"
             ]
           }
@@ -85,7 +147,7 @@
           "meta": {
             "title": "menuManagement",
             "permissions": [
-              "superAdmin",
+              "SuperAdmin",
               "admin"
             ]
           }
@@ -97,7 +159,7 @@
           "meta": {
             "title": "permissionTest",
             "permissions": [
-              "superAdmin"
+              "SuperAdmin"
             ]
           }
         },
@@ -108,7 +170,7 @@
           "meta": {
             "title": "icon",
             "permissions": [
-              "superAdmin"
+              "SuperAdmin"
             ]
           }
         },
@@ -119,7 +181,7 @@
           "meta": {
             "title": "routeManagement",
             "permissions": [
-              "superAdmin"
+              "SuperAdmin"
             ]
           }
         },
@@ -130,7 +192,7 @@
           "meta": {
             "title": "languageManagement",
             "permissions": [
-              "superAdmin"
+              "SuperAdmin"
             ]
           }
         }

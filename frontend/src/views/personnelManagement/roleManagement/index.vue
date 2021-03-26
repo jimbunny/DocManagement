@@ -218,6 +218,7 @@ export default {
           this.$t("header.cancel"),
           () => {
             doDelete({ ids: [row.id] }).then((res) => {
+              const { code, msg, data } = res;
               if (code === okCode) {
                 this.$baseMessage(
                   this.$t("role.deleteRoleSuccessful"),
@@ -242,6 +243,7 @@ export default {
             this.$t("header.cancel"),
             () => {
               doDelete({ ids: ids }).then((res) => {
+                const { code, msg, data } = res;
                 if (code === okCode) {
                   this.$baseMessage(
                     this.$t("role.deleteRoleSuccessful"),

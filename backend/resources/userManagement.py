@@ -1,10 +1,4 @@
 #!/usr/bin/env python
-#-*- coding:utf-8 -*-
-# author:jingtongyu
-# datetime:2020/6/21 9:22 下午
-# software: PyCharm
-
-#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 # author:jingtongyu
 # datetime:2020/6/8 10:14 下午
@@ -48,6 +42,8 @@ class UserManagementResource(Resource):
             user_list = UsersModel.filter_by_username(UsersModel, args.username)
             totalCount = len(user_list)
         for user in user_list:
+            if user.permission == "SuperAdmin":
+                continue
             items.append(
                 {
                     'id': user.id,

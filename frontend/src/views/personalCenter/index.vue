@@ -172,10 +172,21 @@ export default {
       pageSize: 10,
       username: this.userName,
     };
+    console.log(queryForm);
     getList(queryForm).then((res) => {
       const { code, msg, data } = res;
       if (code === okCode) {
-        this.form = data.items[0];
+        if (data.items[0]) {
+          this.form = data.items[0];
+        } else {
+          this.form = {
+            id: "",
+            username: "superAdmin",
+            password: "",
+            confirmPassword: "",
+            email: "superAdmin@express.com",
+          };
+        }
       } else {
         // this.$baseMessage(msg || `获取用户信息失败！`, "error");
         this.$baseMessage(this.$t("personalCenter.getUserInfoFailed"), "error");

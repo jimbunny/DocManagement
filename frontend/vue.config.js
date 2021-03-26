@@ -95,6 +95,7 @@ module.exports = {
             .rule("svg")
             .exclude.add(resolve("src/remixIcon"))
             .add(resolve("src/colorfulIcon"))
+            .add( resolve( 'src/components/DynamicForm/icons' ) )
             .end();
         config.module
             .rule("remixIcon")
@@ -122,6 +123,17 @@ module.exports = {
                 options.compilerOptions.preserveWhitespace = true;
                 return options;
             })
+            .end();
+        config.module
+            .rule( 'icons' )
+            .test( /\.svg$/ )
+            .include.add( resolve( 'src/components/DynamicForm/icons' ) )
+            .end()
+            .use( 'svg-sprite-loader' )
+            .loader( 'svg-sprite-loader' )
+            .options( {
+              symbolId: 'icon-[name]'
+            } )
             .end();
         config.when(process.env.NODE_ENV === "development", (config) => {
             config.devtool("cheap-module-eval-source-map");
@@ -199,6 +211,10 @@ module.exports = {
             scss: {
                 prependData: '@import "~@/styles/variables.scss";',
             },
+           // 给 stylus-loader 传递选项
+            stylus: {
+              import: '~@/assets/style/global.styl'
+            }
         },
     },
 };

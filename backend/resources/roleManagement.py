@@ -49,7 +49,7 @@ class RoleManagementResource(Resource):
             role_list = RolesModel.filter_by_description(RolesModel, args.description)
             totalCount = len(role_list)
         for role in role_list:
-            if role.permission == "superAdmin":
+            if role.permission == "SuperAdmin":
                 continue
             items.append(
                 {

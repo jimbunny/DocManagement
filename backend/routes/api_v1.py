@@ -7,7 +7,7 @@
 from flask import Blueprint
 from flask_restful import Api
 from resources import profiles, users, login, auths, routers, userManagement, roleManagement, menuManagement, \
-    iconManagement, docManagement, language
+    iconManagement, docManagement, language, approval
 
 api_v1 = Blueprint('api_v1', __name__)
 
@@ -39,7 +39,7 @@ api.add_resource(roleManagement.RoleManagementResource, '/roleManagement/doDelet
 api.add_resource(roleManagement.PermissionResource, '/roleManagement/checkPermission', endpoint='postCheckPermission')
 
 api.add_resource(iconManagement.ColorfulIconResource, '/icon/getList')
-
+# language management
 api.add_resource(language.LanguageResource, '/language/i18n', endpoint='getLanguage')
 api.add_resource(language.LanguageResource, '/language/getTitle', endpoint='getTitle')
 api.add_resource(language.LanguageResource, '/language/doEdit', endpoint='putTitle')
@@ -48,3 +48,8 @@ api.add_resource(language.LanguageFileResource, '/language/doEditFile', endpoint
 # doc management
 api.add_resource(docManagement.DocManagementResource, '/docManagement/getFile', endpoint='deleteFile')
 api.add_resource(docManagement.DocManagementResource, '/docManagement/doAdd', endpoint='addFile')
+#approval management
+api.add_resource(approval.ApprovalManagementResource, '/approval/getDeptRoot', endpoint='getDeptRoot')
+api.add_resource(approval.ApprovalManagementResource, '/approval/getPageEmployee', endpoint='postPageEmployee')
+api.add_resource(approval.ApprovalManagementResource, '/approval/getDeptTree', endpoint='putDeptTree')
+api.add_resource(approval.ApprovalManagementResource, '/approval/getUserByDept', endpoint='deleteUserByDept')

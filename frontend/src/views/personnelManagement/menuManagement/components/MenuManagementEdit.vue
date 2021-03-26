@@ -152,6 +152,7 @@ export default {
         // type: "",
         alwaysShow: true,
         permissions: ["superAdmin"],
+        component: "",
       },
       rules: {
         // type: [{ required: true, trigger: "blur", message: "请选择类型" }],
@@ -271,7 +272,7 @@ export default {
         if (valid) {
           if (this.tmp == "root") {
             if (!this.menu.alwaysShow) {
-              const addData = {
+              const editData = {
                 path: this.menu.path + "_menu",
                 component: "Layout",
                 redirect: "noRedirect",
@@ -291,9 +292,9 @@ export default {
                   },
                 ],
               };
-              this.data.push(addData);
+              this.data.push(editData);
             } else {
-              const addData = {
+              const editData = {
                 path: this.menu.path + "_menu",
                 component: "Layout",
                 redirect: "noRedirect",
@@ -305,7 +306,7 @@ export default {
                   icon: this.menu.icon,
                 },
               };
-              this.data.push(addData);
+              this.data.push(editData);
             }
           } else {
             if (!this.menu.alwaysShow) {
@@ -329,7 +330,7 @@ export default {
                 path: this.menu.path,
                 name: this.menu.name,
                 alwaysShow: true,
-                component: "showDoc/index",
+                component: "EmptyLayout",
                 meta: {
                   title: this.menu.name,
                   permissions: this.menu.permissions,
