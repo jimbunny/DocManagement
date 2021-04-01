@@ -172,7 +172,6 @@ export default {
       pageSize: 10,
       username: this.userName,
     };
-    console.log(queryForm);
     getList(queryForm).then((res) => {
       const { code, msg, data } = res;
       if (code === okCode) {

@@ -63,7 +63,6 @@
     {
       "path": "/approvalFlow",
       "component": "Layout",
-      "redirect": "noRedirect",
       "name": "ApprovalFlow",
       "alwaysShow": true,
       "meta": {
@@ -76,11 +75,11 @@
       },
       "children": [
         {
-          "path": "/approvalConfig",
-          "name": "ApprovalConfig",
-          "component": "approvalFlow/approvalConfig/index",
+          "path": "/flowApproval",
+          "name": "FlowApproval",
+          "component": "approvalFlow/flowApproval/index",
           "meta": {
-            "title": "approvalConfig",
+            "title": "flowApproval",
             "permissions": [
               "SuperAdmin",
               "admin"
@@ -88,11 +87,70 @@
           }
         },
         {
-          "path": "/approvalTask",
-          "name": "ApprovalTask",
-          "component": "approvalFlow/approvalTask/index",
+          "path": "/myApproval",
+          "name": "MyApproval",
+          "component": "approvalFlow/myApproval/index",
           "meta": {
-            "title": "approvalTask",
+            "title": "myApproval",
+            "permissions": [
+              "SuperAdmin",
+              "admin"
+            ]
+          }
+        },
+        {
+          "path": "/waitMyApproval",
+          "name": "WaitMyApproval",
+          "component": "approvalFlow/waitMyApproval/index",
+          "meta": {
+            "title": "waitMyApproval",
+            "permissions": [
+              "SuperAdmin",
+              "admin"
+            ]
+          }
+        },
+        {
+          "path": "/approvalByMe",
+          "name": "ApprovalByMe",
+          "component": "approvalFlow/approvalByMe/index",
+          "meta": {
+            "title": "approvalByMe",
+            "permissions": [
+              "SuperAdmin",
+              "admin"
+            ]
+          }
+        },
+        {
+          "path": "/ccToMe",
+          "name": "CcToMe",
+          "component": "approvalFlow/ccToMe/index",
+          "meta": {
+            "title": "ccToMe",
+            "permissions": [
+              "SuperAdmin",
+              "admin"
+            ]
+          }
+        },
+        {
+          "path": "/flowSearch",
+          "name": "FlowSearch",
+          "component": "approvalFlow/flowSearch/index",
+          "meta": {
+            "title": "flowSearch",
+            "permissions": [
+              "SuperAdmin",
+              "admin"
+            ]
+          }
+        },{
+          "path": "/flowSetting",
+          "name": "FlowSetting",
+          "component": "approvalFlow/FlowSetting/index",
+          "meta": {
+            "title": "flowSetting",
             "permissions": [
               "SuperAdmin",
               "admin"
@@ -122,6 +180,18 @@
           "component": "personnelManagement/userManagement/index",
           "meta": {
             "title": "userManagement",
+            "permissions": [
+              "SuperAdmin",
+              "admin"
+            ]
+          }
+        },
+        {
+          "path": "/departmentManagement",
+          "name": "DepartmentManagement",
+          "component": "personnelManagement/departmentManagement/index",
+          "meta": {
+            "title": "departmentManagement",
             "permissions": [
               "SuperAdmin",
               "admin"

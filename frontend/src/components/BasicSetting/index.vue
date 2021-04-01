@@ -83,7 +83,7 @@ export default {
         "label": "假勤管理",
         "value": 1
       }, {
-        "label": "人事管理",
+        "label": "信息管理",
         "value": 2
       }, {
         "label": "财务管理",
@@ -96,6 +96,9 @@ export default {
         "value": 5
       }, {
         "label": "法务管理",
+        "value": 6
+      }, {
+        "label": "人事管理",
         "value": 6
       }, {
         "label": "其他",

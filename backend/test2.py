@@ -57,3 +57,416 @@ if __name__ == '__main__':
     print("第" + str(i+1) + "页数据写入完成")
     print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
 
+
+{
+  "code": 200,
+  "msg": "success",
+  "data": [
+    {
+      "path": "/",
+      "component": "Layout",
+      "redirect": "/index",
+      "children": [
+        {
+          "path": "/index",
+          "name": "Index",
+          "component": "personalCenter/index",
+          "meta": {
+            "title": "personalCenter",
+            "icon": "home",
+            "affix": true,
+            "noKeepAlive": true
+          }
+        }
+      ]
+    },
+    {
+      "path": "/doc",
+      "component": "Layout",
+      "redirect": "/docManagement",
+      "children": [
+        {
+          "path": "/docManagement",
+          "name": "DocManagement",
+          "component": "docManagement/index",
+          "meta": {
+            "title": "docManagement",
+            "icon": "marker",
+            "permissions": [
+              "SuperAdmin",
+              "admin"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "path": "/test",
+      "component": "Layout",
+      "redirect": "/test",
+      "children": [
+        {
+          "path": "/test",
+          "name": "Test",
+          "component": "test/index",
+          "meta": {
+            "title": "test",
+            "icon": "bookmark",
+            "permissions": [
+              "SuperAdmin",
+              "admin"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "path": "/approvalFlow",
+      "component": "Layout",
+      "name": "ApprovalFlow",
+      "alwaysShow": true,
+      "meta": {
+        "title": "approvalFlow",
+        "icon": "calculator",
+        "permissions": [
+          "SuperAdmin",
+          "admin"
+        ]
+      },
+      "children": [
+        {
+          "path": "/flowApproval",
+          "name": "FlowApproval",
+          "component": "approvalFlow/flowApproval/index",
+          "meta": {
+            "title": "flowApproval",
+            "permissions": [
+              "SuperAdmin",
+              "admin"
+            ]
+          },
+          "children": [
+            {
+              "path": "/dataUpdateApproval",
+              "name": "DataUpdateApproval",
+              "component": "approvalFlow/flowApproval/dataUpdateApproval/index",
+              "meta": {
+                "title": "dataUpdateApproval",
+                "permissions": [
+                  "SuperAdmin",
+                  "admin"
+                ]
+              }
+            },
+            {
+              "path": "/permissionUpdateApproval",
+              "name": "PermissionUpdateApproval",
+              "component": "approvalFlow/flowApproval/permissionUpdateApproval/index",
+              "meta": {
+                "title": "permissionUpdateApproval",
+                "permissions": [
+                  "SuperAdmin",
+                  "admin"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "path": "/myApproval",
+          "name": "MyApproval",
+          "component": "approvalFlow/myApproval/index",
+          "alwaysShow": true,
+          "meta": {
+            "title": "myApproval",
+            "permissions": [
+              "SuperAdmin",
+              "admin"
+            ]
+          },
+          "children": [
+            {
+              "path": "/myApprovalDetail",
+              "name": "MyApprovalDetail",
+              "component": "approvalFlow/flowApproval/myApprovalDetail/index",
+              "meta": {
+                "title": "myApprovalDetail",
+                "permissions": [
+                  "SuperAdmin",
+                  "admin"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "path": "/waitMyApproval",
+          "name": "WaitMyApproval",
+          "component": "approvalFlow/waitMyApproval/index",
+          "alwaysShow": true,
+          "meta": {
+            "title": "waitMyApproval",
+            "permissions": [
+              "SuperAdmin",
+              "admin"
+            ]
+          },
+          "children": [
+            {
+              "path": "/waitMyApprovalDetail",
+              "name": "WaitMyApprovalDetail",
+              "component": "approvalFlow/flowApproval/waitMyApprovalDetail/index",
+              "meta": {
+                "title": "waitMyApprovalDetail",
+                "permissions": [
+                  "SuperAdmin",
+                  "admin"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "path": "/approvalByMe",
+          "name": "ApprovalByMe",
+          "component": "approvalFlow/approvalByMe/index",
+          "alwaysShow": true,
+          "meta": {
+            "title": "approvalByMe",
+            "permissions": [
+              "SuperAdmin",
+              "admin"
+            ]
+          },
+          "children": [
+            {
+              "path": "/approvalByMeDetail",
+              "name": "ApprovalByMeDetail",
+              "component": "approvalFlow/flowApproval/approvalByMeDetail/index",
+              "meta": {
+                "title": "approvalByMeDetail",
+                "permissions": [
+                  "SuperAdmin",
+                  "admin"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "path": "/ccToMe",
+          "name": "CcToMe",
+          "component": "approvalFlow/ccToMe/index",
+          "alwaysShow": true,
+          "meta": {
+            "title": "ccToMe",
+            "permissions": [
+              "SuperAdmin",
+              "admin"
+            ]
+          },
+          "children": [
+            {
+              "path": "/ccToMeDetail",
+              "name": "CcToMeDetail",
+              "component": "approvalFlow/flowApproval/ccToMeDetail/index",
+              "meta": {
+                "title": "ccToMeDetail",
+                "permissions": [
+                  "SuperAdmin",
+                  "admin"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "path": "/flowSearch",
+          "name": "FlowSearch",
+          "component": "approvalFlow/flowSearch/index",
+          "alwaysShow": true,
+          "meta": {
+            "title": "flowSearch",
+            "permissions": [
+              "SuperAdmin",
+              "admin"
+            ]
+          },
+          "children": [
+            {
+              "path": "/flowSearchDetail",
+              "name": "FlowSearchDetail",
+              "component": "approvalFlow/flowApproval/flowSearchDetail/index",
+              "meta": {
+                "title": "flowSearchDetail",
+                "permissions": [
+                  "SuperAdmin",
+                  "admin"
+                ]
+              }
+            }
+          ]
+        },{
+          "path": "/flowSetting",
+          "name": "FlowSetting",
+          "component": "approvalFlow/FlowSetting/index",
+          "alwaysShow": true,
+          "meta": {
+            "title": "flowSetting",
+            "permissions": [
+              "SuperAdmin",
+              "admin"
+            ]
+          },
+          "children": [
+            {
+              "path": "/defineFlow",
+              "name": "DefineFlow",
+              "component": "approvalFlow/flowApproval/defineFlow/index",
+              "meta": {
+                "title": "defineFlow",
+                "permissions": [
+                  "SuperAdmin",
+                  "admin"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "path": "/approvalConfig",
+          "name": "ApprovalConfig",
+          "component": "approvalFlow/approvalConfig/index",
+          "meta": {
+            "title": "approvalConfig",
+            "permissions": [
+              "SuperAdmin",
+              "admin"
+            ]
+          }
+        },
+        {
+          "path": "/approvalTask",
+          "name": "ApprovalTask",
+          "component": "approvalFlow/approvalTask/index",
+          "meta": {
+            "title": "approvalTask",
+            "permissions": [
+              "SuperAdmin",
+              "admin"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "path": "/personnelManagement",
+      "component": "Layout",
+      "redirect": "noRedirect",
+      "name": "PersonnelManagement",
+      "alwaysShow": false,
+      "meta": {
+        "title": "configManagement",
+        "icon": "users-cog",
+        "permissions": [
+          "SuperAdmin",
+          "admin"
+        ]
+      },
+      "children": [
+        {
+          "path": "/userManagement",
+          "name": "UserManagement",
+          "component": "personnelManagement/userManagement/index",
+          "meta": {
+            "title": "userManagement",
+            "permissions": [
+              "SuperAdmin",
+              "admin"
+            ]
+          }
+        },
+        {
+          "path": "/departmentManagement",
+          "name": "DepartmentManagement",
+          "component": "personnelManagement/departmentManagement/index",
+          "meta": {
+            "title": "departmentManagement",
+            "permissions": [
+              "SuperAdmin",
+              "admin"
+            ]
+          }
+        },
+        {
+          "path": "/roleManagement",
+          "name": "RoleManagement",
+          "component": "personnelManagement/roleManagement/index",
+          "meta": {
+            "title": "roleManagement",
+            "permissions": [
+              "SuperAdmin",
+              "admin"
+            ]
+          }
+        },
+        {
+          "path": "/menuManagement",
+          "name": "MenuManagement",
+          "component": "personnelManagement/menuManagement/index",
+          "meta": {
+            "title": "menuManagement",
+            "permissions": [
+              "SuperAdmin",
+              "admin"
+            ]
+          }
+        },
+        {
+          "path": "/permission",
+          "name": "PermissionTest",
+          "component": "personnelManagement/permissionTest/index",
+          "meta": {
+            "title": "permissionTest",
+            "permissions": [
+              "SuperAdmin"
+            ]
+          }
+        },
+        {
+          "path": "awesomeIcon",
+          "name": "AwesomeIcon",
+          "component": "byui/icon/index",
+          "meta": {
+            "title": "icon",
+            "permissions": [
+              "SuperAdmin"
+            ]
+          }
+        },
+        {
+          "path": "routerManagement",
+          "name": "RouterManagement",
+          "component": "configManagement/routerManagement/index",
+          "meta": {
+            "title": "routeManagement",
+            "permissions": [
+              "SuperAdmin"
+            ]
+          }
+        },
+        {
+          "path": "languageManagement",
+          "name": "LanguageManagement",
+          "component": "configManagement/languageManagement/index",
+          "meta": {
+            "title": "languageManagement",
+            "permissions": [
+              "SuperAdmin"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

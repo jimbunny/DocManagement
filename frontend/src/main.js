@@ -10,7 +10,9 @@ import i18n from "./lang";
 import '@/components/DynamicForm/styles/index.styl'
 import '@/components/DynamicForm/icons'
 import FormControls from './components/FormControls/index.js'
+import Print from 'vue-print-nb'
 
+Vue.use(Print);
 Vue.use(FormControls)
 Vue.use(ElementUI, {
     i18n: (key, value) => i18n.t(key, value),
