@@ -20,25 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c353ec39-f8b8-4079-a088-14b64c6e39ec" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/debug.logs" beforeDir="false" afterPath="$PROJECT_DIR$/logs/debug.logs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/debug.logs.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/super_router.json" beforeDir="false" afterPath="$PROJECT_DIR$/super_router.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test2.py" beforeDir="false" afterPath="$PROJECT_DIR$/test2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/thai.json" beforeDir="false" afterPath="$PROJECT_DIR$/thai.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zh.json" beforeDir="false" afterPath="$PROJECT_DIR$/zh.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/y18n/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/node_modules/y18n/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/y18n/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/node_modules/y18n/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/y18n/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/node_modules/y18n/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/BasicSetting/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/BasicSetting/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/views/approvalFlow/approvalConfig/index.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/views/approvalFlow/approvalConfig/mockData.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/views/approvalFlow/approvalTask/index.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/views/personalCenter/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/personalCenter/index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +188,7 @@
       <workItem from="1616653380763" duration="2545000" />
       <workItem from="1616723642909" duration="1625000" />
       <workItem from="1616982415541" duration="17756000" />
-      <workItem from="1617185194974" duration="5781000" />
+      <workItem from="1617185194974" duration="6380000" />
     </task>
     <servers />
   </component>
