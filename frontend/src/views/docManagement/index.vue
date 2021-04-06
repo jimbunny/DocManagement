@@ -59,7 +59,8 @@
             </el-select>
           </el-form-item>
           <el-form-item :label="$t('docs.content')" prop="content">
-            <quill-editor
+          <tinymce v-model="form.content" :height="500" />
+            <!--<quill-editor
               v-model="form.content"
               :style="{
                 height: '600px',
@@ -68,7 +69,7 @@
               :options="editorOption"
               @blur="onEditorBlur($event)"
               @change="onEditorChange($event)"
-            ></quill-editor>
+            ></quill-editor> -->
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="handleSee">
@@ -103,10 +104,11 @@ import { getFile, doAdd as addFile } from "@/api/docManagement";
 import { okCode, errorCode } from "@/config/settings";
 import { generateTitle } from "@/utils/i18n";
 import { getRouterList as getList } from "@/api/router";
+import Tinymce from '@/components/Tinymce'
 
 export default {
   name: "Editor",
-  components: { quillEditor },
+  components: { quillEditor, Tinymce },
   data() {
     return {
       data: [],
@@ -361,5 +363,9 @@ export default {
   justify-content: space-between;
   font-size: 14px;
   padding-right: 8px;
+}
+
+.editor-content{
+  margin-top: 20px;
 }
 </style>

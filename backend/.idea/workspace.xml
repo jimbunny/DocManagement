@@ -22,6 +22,12 @@
     <list default="true" id="c353ec39-f8b8-4079-a088-14b64c6e39ec" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/debug.logs" beforeDir="false" afterPath="$PROJECT_DIR$/logs/debug.logs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router.json" beforeDir="false" afterPath="$PROJECT_DIR$/router.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/thai.json" beforeDir="false" afterPath="$PROJECT_DIR$/thai.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zh.json" beforeDir="false" afterPath="$PROJECT_DIR$/zh.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +54,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../CartonAI" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -188,7 +194,9 @@
       <workItem from="1616653380763" duration="2545000" />
       <workItem from="1616723642909" duration="1625000" />
       <workItem from="1616982415541" duration="17756000" />
-      <workItem from="1617185194974" duration="6380000" />
+      <workItem from="1617185194974" duration="6381000" />
+      <workItem from="1617329940413" duration="1859000" />
+      <workItem from="1617587274663" duration="2889000" />
     </task>
     <servers />
   </component>
@@ -216,11 +224,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="720" y="322" key="#com.intellij.fileTypes.FileTypeChooser/-1024.0.1024.728/0.0.1920.1040@0.0.1920.1040" timestamp="1613702766763" />
-    <state x="617" y="227" key="FileChooserDialogImpl" timestamp="1617185233070">
+    <state x="617" y="227" key="FileChooserDialogImpl" timestamp="1617331745525">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/-1024.0.1024.728/0.0.1920.1040@0.0.1920.1040" timestamp="1612755673636" />
-    <state x="617" y="227" key="FileChooserDialogImpl/0.0.1600.860/-1920.-178.1920.1040@0.0.1600.860" timestamp="1617185233070" />
+    <state x="617" y="227" key="FileChooserDialogImpl/0.0.1600.860/-1920.-178.1920.1040@0.0.1600.860" timestamp="1617331745525" />
     <state width="778" height="222" key="GridCell.Tab.0.bottom" timestamp="1614221637991">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

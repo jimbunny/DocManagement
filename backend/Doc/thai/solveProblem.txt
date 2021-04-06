@@ -1,0 +1,43 @@
+北榄分拨中心分拣机软硬件问题排查方法---***---<h1>软件问题</h1>
+<h2>软件安装</h2>
+<ol>
+<li>新机器软件安装问题可以联系北榄分拨中心IT(pond)</li>
+</ol>
+<h2>WCS后台管理系统</h2>
+<h3>核心代码</h3>
+<p>代码所在服务器地址：192.168.10.211</p>
+<p>核心代码jar包，启动文件如下图所示。</p>
+<p>若服务器重启，开机后会自行运行程序。</p>
+<p>程序启动命令 <strong>sh service.sh start</strong></p>
+<p>程序停止命令 <strong>sh service.sh stop</strong></p>
+<p>程序重启命令 <strong>sh service.sh restart</strong></p>
+<p>程序状态查看命令 <strong>sh service.sh status</strong></p>
+<p>查看日志命令 <strong>tail /log/日志</strong><strong>文件</strong></p>
+<h3>数据库</h3>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库地址：192.168.10.212</p>
+<p>用户名：root&nbsp;&nbsp;</p>
+<p>密码：ydt123qwe!@#&nbsp;</p>
+<p>数据库表：guns_advanced 如下图所示</p>
+<p>到件扫描表：t_scan_arrival_info （供电台扫描）</p>
+<p>发件扫描表：t_scan_send_info （狂扫3摄像头装车扫描）</p>
+<p>集包扫描表：可从数据库表中备注查看 （格口掉落为集包扫描）</p>
+<h3>图片服务器</h3>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 图片服务器地址：ftp://192.168.10.213&nbsp;</p>
+<p>用户名：yidatong</p>
+<p>密码：ydt123qwe!@#</p>
+<p>也可以从分拣详情中点击链接查看图片（即数据库表中http://xxx.xxx.xxx.xxx:8071/xx）</p>
+<h1>硬件问题</h1>
+<h2>●&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>狂扫3个相机在系统中显示2个，排查方法</strong></h2>
+<p>○&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 查看电源指示灯，确定摄像头是否正常。</p>
+<p>○&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 若摄像头工作正常，检查网线是否有网络。</p>
+<h2>●&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>交叉带阻环不下件，排查方法</strong></h2>
+<p>○&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 检查多少格口红灯亮，若红灯过多，集包人员来不及下货。</p>
+<p>○&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 异常格口是否解锁，异常快递下不去占用小车。</p>
+<p>○&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 留盘检测光电是否正常，正常情况一边黄色，绿色，另一边绿色，货物经过时，黄灯熄灭，若两侧均为绿色灯，光电没有配置好。</p>
+<h2>●&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>若所有设备无法分拣</strong>。</h2>
+<p>○&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 检车服务器和网络情况。</p>
+<h2>●&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>若部分设备无法分拣</strong>。</h2>
+<p>○&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 与服务器无关，可能原因硬件故障，需要联系供应商电气工程师。</p>
+<h2>●&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>皮带卡电问题</strong></h2>
+<p>○&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 联系机修。</p>
+<p>&nbsp;</p>
